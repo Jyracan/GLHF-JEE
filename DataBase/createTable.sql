@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `Etudiant`.`Étudiant` (
   `sexe` VARCHAR(1) NULL,
   `nom` VARCHAR(45) NOT NULL,
   `prenom` VARCHAR(45) NOT NULL,
-  `dateNaissance` DATE NULL,
+  `dateNaissance` VARCHAR(45) NULL,
   `serieBac` VARCHAR(10) NULL,
   `anneeBac` INT NULL,
   `mentionBac` VARCHAR(2) NULL,

@@ -1,6 +1,20 @@
---- -----------------------------------------------------
---- Insertion of values into Étudiant
---- -----------------------------------------------------
+USE Authentification
+
+
+-- -----------------------------------------------------
+-- Insertion of values into Utilisateur
+-- -----------------------------------------------------
+
+INSERT INTO Utilisateur(id,mdp,qSecrete,rqSecrete) VALUES ('root','root','','');
+
+
+-- Changing data base
+
+USE Etudiant
+
+-- ----------------------------------------------------
+-- Insertion of values into Étudiant
+-- -----------------------------------------------------
 
 INSERT INTO Étudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('rcppkfwy0','M','Potter','Lambert','11/10/1995','STL',2008,'P','DUT/INFO',2010,'Bordeaux',2011,'Lambert.Potter@bigCorp.com','Lambert.Potter@lol.com');
 INSERT INTO Étudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('0fh3krsy8','M','Thomas','Bernard','11/20/1993','STL',2008,'B','CPGE/PC',2010,'Paris',2011,'Bernard.Thomas@bigCorp.com','Bernard.Thomas@lol.com');
