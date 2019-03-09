@@ -20,5 +20,11 @@
 				<input type="submit" value="Connexion">
 			</div>
 		</form>
+		<form action="QuestionSecrete" method="post">
+			<div>
+				<input type="submit" value="J'ai oublié mon mot de passe">
+			</div>
+		</form>
+		
 	</body>
 </html>
