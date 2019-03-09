@@ -9,7 +9,7 @@
 	<body>
 		<div>Bienvenue ! Veuillez vous connecter !</div>
 		<!--  <form action="ConnexionServlet" method="post">-->
-		<form action="MenuServlet.java" method="post">
+		<form action="Menu" method="post">
 			<div>
 				<input type="text" id="name" placeholder="Ton nom !">
 			</div>
