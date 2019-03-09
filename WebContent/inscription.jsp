@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Question Secrète</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<div>Pour pouvoir vous connecter, veuillez répondre à la question suivante</div>
+
 </body>
 </html>
