@@ -8,7 +8,8 @@
 	</head>
 	<body>
 		<div>Bienvenue ! Veuillez vous connecter !</div>
-		<form action="ConnexionServlet" method="post">
+		<!--  <form action="ConnexionServlet" method="post">-->
+		<form action="menu.jsp" method="post">
 			<div>
 				<input type="text" id="name" placeholder="Ton nom !">
 			</div>
