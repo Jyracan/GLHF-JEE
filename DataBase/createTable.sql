@@ -23,9 +23,9 @@ CREATE SCHEMA IF NOT EXISTS `Authentification` ;
 USE `Etudiant` ;
 
 -- -----------------------------------------------------
--- Table `Etudiant`.`Étudiant`
+-- Table `Etudiant`.`Etudiant`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Etudiant`.`Étudiant` (
+CREATE TABLE IF NOT EXISTS `Etudiant`.`Etudiant` (
   `id` VARCHAR(9) NOT NULL,
   `sexe` VARCHAR(1) NULL,
   `nom` VARCHAR(45) NOT NULL,
@@ -56,9 +56,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Etudiant`.`Étudiant_has_Groupe`
+-- Table `Etudiant`.`Etudiant_has_Groupe`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Etudiant`.`Étudiant_has_Groupe` (
+CREATE TABLE IF NOT EXISTS `Etudiant`.`Etudiant_has_Groupe` (
   `Étudiant_id` VARCHAR(9) NOT NULL,
   `Groupe_idGroupe` INT NOT NULL,
   PRIMARY KEY (`Étudiant_id`, `Groupe_idGroupe`),

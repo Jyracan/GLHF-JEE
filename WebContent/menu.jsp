@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>GLHF-Menu</title>
 	<div>Bienvenue !</div>
-	<form action="">
+	<form action = "StudentVisualizationServlet" method = "post">
 		<input type="submit" value="visualisation des étudiants">
 	</form>
 	<form action="">

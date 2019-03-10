@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.util.List,DataAccessObjects.Etudiant"%>
+
+<%
+List<Etudiant> listStudent = (List<Etudiant>)request.getAttribute("listStudent");
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Liste des étudiants</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>id</th>
+			<th>Sexe</th>
+			<th>nom</th>
+			<th>prenom</th>
+			<th>dateNaissance</th>
+			<th>serieBac</th>
+			<th>anneeBac</th>
+			<th>mentionBac</th>
+			<th>diplome</th>
+			<th>anneeDiplome</th>
+			<th>villeDiplome</th>
+			<th>inscription</th>
+			<th>courrielPro</th>
+			<th>courrielPerso</th>
+		</tr>
+		<%
+			for (Etudiant etudiant:listStudent) {
+				
+				String id = etudiant.getId();
+				String sexe = etudiant.getSexe();
+                String nom = etudiant.getNom();
+                String prenom = etudiant.getPrenom();
+                String dateNaissance = etudiant.getDateNaissance();
+                String serieBac = etudiant.getSerieBac();
+                int anneeBac = etudiant.getAnneeBac();
+                String mentionBac = etudiant.getMentionBac();
+                String diplome = etudiant.getDiplome();
+                int anneeDiplome = etudiant.getAnneeDiplome();
+                String villeDiplome = etudiant.getVilleDiplome();
+                int inscription = etudiant.getInscription();
+                String courrielPro = etudiant.getCourrielPro();
+                String courrielPerso = etudiant.getCourrielPerso();
+		%>
+		<tr>
+			<td><%=id %></td>
+			<td><%=sexe %></td>
+			<td><%=nom %></td>
+			<td><%=prenom %></td>
+			<td><%=dateNaissance %></td>
+			<td><%=serieBac %></td>
+			<td><%=anneeBac %></td>
+			<td><%=mentionBac %></td>
+			<td><%=diplome %></td>
+			<td><%=anneeDiplome %></td>
+			<td><%=villeDiplome %></td>
+			<td><%=inscription %></td>
+			<td><%=courrielPro %></td>
+			<td><%=courrielPerso %></td>
+		</tr>
+		<%
+			}
+		%>
+	</table>
+</body>
+</html>
