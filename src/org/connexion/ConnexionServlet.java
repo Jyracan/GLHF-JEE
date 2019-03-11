@@ -1,6 +1,7 @@
 package org.connexion;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ public class ConnexionServlet extends HttpServlet {
 	
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/connexion.jsp");
+		
 		try {
 			rd.forward(request, response);
 		} catch (IOException e) {

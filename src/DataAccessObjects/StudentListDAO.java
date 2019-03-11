@@ -12,12 +12,13 @@ public class StudentListDAO {
 	
 	public List<Etudiant> getStudentList() {
 		
-		  List<Etudiant> etudiants = new ArrayList<Etudiant>();
-		  Connection connection = DBManager.getInstance().getConnection();
+	  List<Etudiant> etudiants = new ArrayList<Etudiant>();
+	  Connection connection = DBManager.getInstance().getConnection();
         try 
         {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT id,sexe,nom,prenom FROM Etudiant");
+            
             while(rs.next())
             {
           	  String id = rs.getString("id");
