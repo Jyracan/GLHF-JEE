@@ -9,17 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sessionManagement.User;
+
 public class ConnexionServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
-	
-	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/connexion.jsp");
 		
 		try {
@@ -30,4 +24,22 @@ public class ConnexionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
+		User user = new User(login,password);
+		request.getSession().setAttribute("user", user);
+		
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
+		
+		try {
+			rd.forward(request, response);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

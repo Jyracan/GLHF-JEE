@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sessionManagement.SessionVerifier;
+import sessionManagement.User;
+
 public class MenuServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +22,9 @@ public class MenuServlet extends HttpServlet {
 	}
 	
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
+		SessionVerifier sv = SessionVerifier.getInstance();
+		RequestDispatcher rd = sv.verify(this, request, "/menu.jsp");
+		
 		try {
 			rd.forward(request, response);
 		} catch (IOException e) {
