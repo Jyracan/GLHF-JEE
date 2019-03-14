@@ -26,8 +26,7 @@ public class StudentVisualizationServlet extends HttpServlet {
 
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		SessionVerifier sv = SessionVerifier.getInstance();
-		//RequestDispatcher rd = sv.verify(this, request, "/StudentsList.jsp");
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
+		RequestDispatcher rd = sv.verify(this, request, "/menu.jsp");
 		
 		StudentListDAO studentListDAO = new StudentListDAO();
 		List<Etudiant> listStudents = studentListDAO.getStudentList();
