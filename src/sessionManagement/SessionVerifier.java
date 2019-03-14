@@ -1,6 +1,7 @@
 package sessionManagement;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,14 +21,24 @@ public final class SessionVerifier {
 	}
 	
 	public RequestDispatcher verify(HttpServlet servlet, HttpServletRequest request, String direction) {
-		User user = (User) request.getSession(false).getAttribute("user");
-		RequestDispatcher rd;
-		
-		if(user == null) {
-			rd = servlet.getServletContext().getRequestDispatcher("/connexion.jsp");
-		} else {
-			rd = servlet.getServletContext().getRequestDispatcher(direction);
-		}
+		Cookie[] cookies = request.getCookies();
+        boolean foundCookie = false;
+        int i = 0;
+        RequestDispatcher rd;
+
+        while(!foundCookie && i < cookies.length) {
+        	if (cookies[i].getName().equals("userId")) {
+        		//TODO check id when connection to db done
+                foundCookie = true;
+            }
+        	i++;
+        }
+
+        if (!foundCookie) {
+        	rd = servlet.getServletContext().getRequestDispatcher("/connexion.jsp");
+        } else {
+        	rd = servlet.getServletContext().getRequestDispatcher(direction);
+        }
 		
 		return rd;
 	}

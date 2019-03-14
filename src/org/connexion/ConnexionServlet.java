@@ -5,10 +5,12 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sessionManagement.SessionVerifier;
 import sessionManagement.User;
 
 public class ConnexionServlet extends HttpServlet {
@@ -26,20 +28,13 @@ public class ConnexionServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
-		User user = new User(login,password);
-		request.getSession().setAttribute("user", user);
+		User user = new User(request.getParameter("login"), request.getParameter("password"), "12");
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
+		Cookie ck = new Cookie("userId", user.getId());
+		ck.setMaxAge(-1);
+		response.addCookie(ck);
 		
-		try {
-			rd.forward(request, response);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
+		response.sendRedirect("Menu");
 	}
 	
 }
