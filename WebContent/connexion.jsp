@@ -9,9 +9,9 @@
 	<body>
 		<div>Bienvenue ! Veuillez vous connecter !</div>
 		<!--  <form action="ConnexionServlet" method="post">-->
-		<form action="Menu" method="post">
+		<form action="Connexion" method="post">
 			<div>
-				<input type="text" id="name" placeholder="Ton nom !">
+				<input type="text" id="login" placeholder="Ton nom !">
 			</div>
 			<div>
 				<input type="password" id="password" placeholder="Ton mot de passe !">

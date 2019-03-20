@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DataAccessObjects.Etudiant;
 import DataAccessObjects.StudentListDAO;
+import sessionManagement.SessionVerifier;
 
 public class StudentVisualizationServlet extends HttpServlet {
        
@@ -24,7 +25,9 @@ public class StudentVisualizationServlet extends HttpServlet {
 	}
 
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");
+		SessionVerifier sv = SessionVerifier.getInstance();
+		RequestDispatcher rd = sv.verify(this, request, "/menu.jsp");
+		
 		StudentListDAO studentListDAO = new StudentListDAO();
 		List<Etudiant> listStudents = studentListDAO.getStudentList();
 		try {

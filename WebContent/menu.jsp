@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>GLHF-Menu</title>
+</head>
+<body>
 	<div>Bienvenue !</div>
 	<form action = "StudentVisualizationServlet" method = "post">
 		<input type="submit" value="visualisation des étudiants">
@@ -15,8 +17,5 @@
 	<form action="Connexion">
 		<input type="submit" value="deconnexion">
 	</form>
-</head>
-<body>
-
 </body>
 </html>

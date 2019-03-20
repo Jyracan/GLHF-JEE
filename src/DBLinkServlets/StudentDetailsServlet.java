@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DataAccessObjects.Etudiant;
 import DataAccessObjects.StudentListDAO;
+import sessionManagement.SessionVerifier;
 
 @WebServlet("/StudentDetailsServlet")
 public class StudentDetailsServlet extends HttpServlet {
@@ -25,15 +26,16 @@ public class StudentDetailsServlet extends HttpServlet {
 	}
 
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
+		SessionVerifier sv = SessionVerifier.getInstance();
+		RequestDispatcher rd = sv.verify(this, request, "/menu.jsp");
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/StudentDetail.jsp");
 		String searchText = request.getParameter("searchText");
 		StudentListDAO studentListDAO = new StudentListDAO();
 		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);
 		try {
 			if(etudiant == null)
 			{
-				rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");
+				rd = sv.verify(this, request, "/StudentsList.jsp");
 				rd.forward(request, response);
 			}
 			else 
