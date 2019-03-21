@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +25,7 @@ public class StudentVisualizationServlet extends HttpServlet {
 
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		SessionVerifier sv = SessionVerifier.getInstance();
-		RequestDispatcher rd = sv.verify(this, request, "/menu.jsp");
+		RequestDispatcher rd = sv.verify(this, request, "/StudentsList.jsp");
 		
 		StudentListDAO studentListDAO = new StudentListDAO();
 		List<Etudiant> listStudents = studentListDAO.getStudentList();

@@ -27,7 +27,7 @@ public class StudentDetailsServlet extends HttpServlet {
 
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		SessionVerifier sv = SessionVerifier.getInstance();
-		RequestDispatcher rd = sv.verify(this, request, "/menu.jsp");
+		RequestDispatcher rd = sv.verify(this, request, "/StudentDetail.jsp");
 		
 		String searchText = request.getParameter("searchText");
 		StudentListDAO studentListDAO = new StudentListDAO();
