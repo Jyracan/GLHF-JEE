@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sessionManagement.User;
 
@@ -32,9 +33,10 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = new User(request.getParameter("login"), request.getParameter("password"), "12");
 		
-		Cookie ck = new Cookie("userId", user.getId());
+		request.getSession().setAttribute("user", user);
+		/*Cookie ck = new Cookie("userId", user.getId());
 		ck.setMaxAge(-1);
-		response.addCookie(ck);
+		response.addCookie(ck);*/
 		
 		response.sendRedirect("Menu");
 	}

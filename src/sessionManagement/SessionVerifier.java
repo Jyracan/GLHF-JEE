@@ -1,9 +1,12 @@
 package sessionManagement;
 
+import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public final class SessionVerifier {
 	
@@ -20,6 +23,7 @@ public final class SessionVerifier {
         return INSTANCE;
 	}
 	
+	/*
 	public RequestDispatcher verify(HttpServlet servlet, HttpServletRequest request, String direction) {
 		Cookie[] cookies = request.getCookies();
         boolean foundCookie = false;
@@ -41,5 +45,9 @@ public final class SessionVerifier {
         }
 		
 		return rd;
+	}
+	*/
+	public boolean verify(HttpServletRequest request, HttpServletResponse response) {
+		return request.getSession().getAttribute("user") == null;
 	}
 }

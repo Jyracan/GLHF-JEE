@@ -25,6 +25,7 @@ public class StudentDetailsServlet extends HttpServlet {
 		doProcess(request, response);
 	}
 
+	/*
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		SessionVerifier sv = SessionVerifier.getInstance();
 		RequestDispatcher rd = sv.verify(this, request, "/StudentDetail.jsp");
@@ -49,5 +50,38 @@ public class StudentDetailsServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
+	*/
+	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
+		if (SessionVerifier.getInstance().verify(request, response)) {
+			try {
+				response.sendRedirect("Connexion");
+				return;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/StudentDetail.jsp");
+		
+		String searchText = request.getParameter("searchText");
+		StudentListDAO studentListDAO = new StudentListDAO();
+		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);
+		try {
+			if(etudiant == null)
+			{
+				rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");
+				rd.forward(request, response);
+			}
+			else 
+			{
+				request.setAttribute("StudentDetail", etudiant);
+				rd.forward(request, response);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+	}
 }

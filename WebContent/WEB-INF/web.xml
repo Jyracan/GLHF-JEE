@@ -11,6 +11,15 @@
     <url-pattern>/Connexion</url-pattern>
   </servlet-mapping>
   <servlet>
+    <display-name>Deconnexion</display-name>
+    <servlet-name>Deconnexion</servlet-name>
+    <servlet-class>org.connexion.DeconnexionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Deconnexion</servlet-name>
+    <url-pattern>/Deconnexion</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>Menu</display-name>
     <servlet-name>Menu</servlet-name>
     <servlet-class>org.connexion.MenuServlet</servlet-class>
