@@ -36,8 +36,15 @@
 			function reload(){
 				var tableau = document.getElementById("tableau");
 				// TODO : Voir comment vider la table plus proprement
-				tableau.innerHTML = "";
+				clear();
 				loadTable();
+			}
+			function clear(){
+				var tableau = document.getElementById("tableau");
+				longueur = tableau.rows.length;
+				for (i=1;i<longueur;i++){
+					tableau.deleteRow(-1);
+				}
 			}
 		
 		</script>
