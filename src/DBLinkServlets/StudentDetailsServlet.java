@@ -61,16 +61,22 @@ public class StudentDetailsServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/StudentDetail.jsp");
-		
+
+		String buttonPressed1 = request.getParameter("chercher"); //pour savoir sur quel bouton on a cliqué
+		String buttonPressed2 = request.getParameter("modifier");
+		RequestDispatcher rd = null;
+		if(buttonPressed1!=null) {
+			rd = getServletContext().getRequestDispatcher("/StudentDetail.jsp");
+		}
+		if(buttonPressed2!=null) {
+			rd = getServletContext().getRequestDispatcher("/StudentModification.jsp");
+		}
 		String searchText = request.getParameter("searchText");
 		StudentListDAO studentListDAO = new StudentListDAO();
 		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);
 		try {
 			if(etudiant == null)
 			{
-				rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");
 				rd.forward(request, response);
 			}
 			else 

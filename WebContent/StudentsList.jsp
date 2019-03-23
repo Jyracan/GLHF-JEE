@@ -18,9 +18,9 @@ List<Etudiant> listStudent = (List<Etudiant>)request.getAttribute("listStudent")
 			<div>
 				<label for="name" >Afficher le détail d'un étudiant : </label>
 				<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
-				<input type = "submit" value = "Chercher">
+				<input type = "submit" name="chercher" value = "Chercher">
+				<input type = "submit" name ="modifier" value = "Modifier l'étudiant">
 			</div>
-	</form>	
 	<div >Liste des étudiants :</div>	
 	<table border="1">
 		<tr>
