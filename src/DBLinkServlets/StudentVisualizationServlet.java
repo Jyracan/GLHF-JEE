@@ -22,34 +22,10 @@ public class StudentVisualizationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
-
-	/*
-	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
-		SessionVerifier sv = SessionVerifier.getInstance();
-		RequestDispatcher rd = sv.verify(this, request, "/StudentsList.jsp");
-		
-		StudentListDAO studentListDAO = new StudentListDAO();
-		List<Etudiant> listStudents = studentListDAO.getStudentList();
-		try {
-			request.setAttribute("listStudent", listStudents);
-			rd.forward(request, response);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
-	}
-	*/
 	
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		if (SessionVerifier.getInstance().verify(request, response)) {
-			try {
-				response.sendRedirect("Connexion");
-				return;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			return;
 		}
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");

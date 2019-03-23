@@ -1,6 +1,11 @@
 package org.connexion;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -9,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DataAccessObjects.DBManagerAuth;
 import sessionManagement.User;
 
 public class ConnexionServlet extends HttpServlet {
@@ -31,14 +37,34 @@ public class ConnexionServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("###############################################################################");
 		User user = new User(request.getParameter("login"), request.getParameter("password"), "12");
-		
-		request.getSession().setAttribute("user", user);
-		/*Cookie ck = new Cookie("userId", user.getId());
-		ck.setMaxAge(-1);
-		response.addCookie(ck);*/
-		
-		response.sendRedirect("Menu");
+		Connection connection = DBManagerAuth.getInstance().getConnection();
+		boolean test = false; 
+		try 
+        {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT id FROM Utilisateur");
+            System.out.println(rs);
+            
+            while(rs.next() && rs.getString("id") != request.getParameter("login"))
+            {
+          	  	if( rs.getString("id") != request.getParameter("login")) {
+          	  		test = true;
+          	  	}
+            }
+            if(test) {
+            	request.getSession().setAttribute("user", user);
+            	response.sendRedirect("Menu");
+            }
+            else {
+            	response.sendRedirect("Connexion");
+            }
+         } 
+         catch (SQLException e) 
+         {
+             e.printStackTrace();
+         }
 	}
 	
 }

@@ -86,7 +86,7 @@ public class DBManagerAuth {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Connection c = DBManager.getInstance().getConnection();
+		Connection c = DBManagerAuth.getInstance().getConnection();
 		if (c != null) {
 			try {
 				System.out.println("Connection to db : " + c.getCatalog());
@@ -101,7 +101,7 @@ public class DBManagerAuth {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
-				DBManager.getInstance().cleanup(c, null, null);
+				DBManagerAuth.getInstance().cleanup(c, null, null);
 			}
 		}
 	}

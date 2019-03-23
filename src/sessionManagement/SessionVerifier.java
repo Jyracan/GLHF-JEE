@@ -23,31 +23,16 @@ public final class SessionVerifier {
         return INSTANCE;
 	}
 	
-	/*
-	public RequestDispatcher verify(HttpServlet servlet, HttpServletRequest request, String direction) {
-		Cookie[] cookies = request.getCookies();
-        boolean foundCookie = false;
-        int i = 0;
-        RequestDispatcher rd;
-
-        while(!foundCookie && i < cookies.length) {
-        	if (cookies[i].getName().equals("userId")) {
-        		//TODO check id when connection to db done
-                foundCookie = true;
-            }
-        	i++;
-        }
-
-        if (!foundCookie) {
-        	rd = servlet.getServletContext().getRequestDispatcher("/connexion.jsp");
-        } else {
-        	rd = servlet.getServletContext().getRequestDispatcher(direction);
-        }
-		
-		return rd;
-	}
-	*/
 	public boolean verify(HttpServletRequest request, HttpServletResponse response) {
-		return request.getSession().getAttribute("user") == null;
+		if (request.getSession().getAttribute("user") == null) {
+			try {
+				response.sendRedirect("Connexion");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
+		}
+		return false;
 	}
 }
