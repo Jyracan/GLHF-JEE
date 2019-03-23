@@ -39,13 +39,6 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("###############################################################################");
 		User user = new User(request.getParameter("login"), request.getParameter("password"), "12");
-		System.out.println("coucou");
-		request.getSession().setAttribute("user", user);
-		/*Cookie ck = new Cookie("userId", user.getId());
-		ck.setMaxAge(-1);
-		response.addCookie(ck);*/
-		
-		response.sendRedirect("Menu");
 		Connection connection = DBManagerAuth.getInstance().getConnection();
 		boolean test = false; 
 		try 
