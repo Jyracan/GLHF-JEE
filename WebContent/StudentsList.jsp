@@ -49,6 +49,7 @@
 					<label for="name" >Afficher le détail d'un étudiant : </label>
 					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
 					<input type = "submit" value = "Chercher">
+					<input type = "submit" name ="modifier" value = "Modifier l'étudiant">
 				</div>
 		</form>	
 		<button id="reload" onClick="reload()">Rechargement du tableau niveau ObiWan !</button>
