@@ -25,13 +25,7 @@ public class StudentVisualizationServlet extends HttpServlet {
 	
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		if (SessionVerifier.getInstance().verify(request, response)) {
-			try {
-				response.sendRedirect("Connexion");
-				return;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			return;
 		}
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");

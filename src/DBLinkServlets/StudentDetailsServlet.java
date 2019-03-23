@@ -27,13 +27,7 @@ public class StudentDetailsServlet extends HttpServlet {
 
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		if (SessionVerifier.getInstance().verify(request, response)) {
-			try {
-				response.sendRedirect("Connexion");
-				return;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			return;
 		}
 
 		String buttonPressed1 = request.getParameter("chercher"); //pour savoir sur quel bouton on a cliqué
