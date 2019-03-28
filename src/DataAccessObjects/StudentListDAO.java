@@ -78,6 +78,69 @@ public class StudentListDAO {
       else
     	  return etudiants.get(0);
    }
+	
+	public void updateStudent(Etudiant etudiant) {
+		
+		System.out.println("Beginning update");
+		deleteSudent(etudiant);
+		addStudent(etudiant);
+		System.out.println("Update done");
+	}
+	
+	public void addStudent(Etudiant etudiant) {
+		
+		Connection connection = DBManager.getInstance().getConnection();
+		ArrayList<String> parameters = new ArrayList<String>();
+		
+		parameters.add(etudiant.getId());
+		parameters.add(etudiant.getSexe());
+		parameters.add(etudiant.getNom());
+		parameters.add(etudiant.getPrenom());
+		parameters.add(etudiant.getDateNaissance());
+		parameters.add(etudiant.getSerieBac());
+		parameters.add(Integer.toString(etudiant.getAnneeBac()));
+        parameters.add(etudiant.getMentionBac());
+        parameters.add(etudiant.getDiplome());
+        parameters.add(Integer.toString(etudiant.getAnneeDiplome()));
+        parameters.add(etudiant.getVilleDiplome());
+        parameters.add(Integer.toString(etudiant.getInscription()));
+        parameters.add(etudiant.getCourrielPro());
+        parameters.add(etudiant.getCourrielPerso());
+		
+		try{
+	    	  PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Etudiant (id,sexe, nom, prenom, dateNaissance, serieBac,"
+	    	  		+ "anneeBac, mentionBac, diplome, anneeDiplome, villeDiplome, inscription,courrielPro, courrielPerso) VALUES "
+	    	  		+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");	
+	    	  for(int i = 0; i<parameters.size();i++) {
+	    		  pstmt.setString(i+1, parameters.get(i));
+	    	  }
+	    	  pstmt.executeUpdate();
+	    	  System.out.println("Student added");
+	      }
+		catch (SQLException e) 
+	       {
+	           e.printStackTrace();
+	       }
+		
+	}
+	
+	public void deleteSudent(Etudiant etudiant) {
+		
+		Connection connection = DBManager.getInstance().getConnection();
+		String id = etudiant.getId();
+		
+		try{
+	    	  PreparedStatement pstmt = connection.prepareStatement("DELETE FROM Etudiant WHERE Etudiant.id = ?");   	 
+	    	  pstmt.setString(1,id);
+	    	  pstmt.executeUpdate();
+	    	  System.out.println("Student deleted");
+	      }
+		catch (SQLException e) 
+	       {
+	           e.printStackTrace();
+	       }
+		
+	}
 }
 
 

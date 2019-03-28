@@ -32,6 +32,7 @@ public class StudentDetailsServlet extends HttpServlet {
 
 		String buttonPressed1 = request.getParameter("chercher"); //pour savoir sur quel bouton on a cliqué
 		String buttonPressed2 = request.getParameter("modifier");
+		String buttonPressed3 = request.getParameter("sauvegarderModifications");
 		RequestDispatcher rd = null;
 		if(buttonPressed1!=null) {
 			rd = getServletContext().getRequestDispatcher("/StudentDetail.jsp");
@@ -42,6 +43,23 @@ public class StudentDetailsServlet extends HttpServlet {
 		String searchText = request.getParameter("searchText");
 		StudentListDAO studentListDAO = new StudentListDAO();
 		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);
+		
+		if(buttonPressed3!=null) {
+			String modified = request.getParameter("studentModified");
+			Etudiant student = studentListDAO.getStudentDetail(modified);
+			System.out.println(modified);
+			System.out.println(student);
+			studentListDAO.updateStudent(student);
+			System.out.println("Student updated");
+			rd = getServletContext().getRequestDispatcher("/StudentModification.jsp");
+			try {
+				rd.forward(request, response);
+			} catch (ServletException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		try {
 			if(etudiant == null)
 			{
