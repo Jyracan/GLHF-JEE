@@ -57,6 +57,7 @@
 					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
 					<input type = "submit" value = "Chercher">
 					<input type = "submit" name ="modifier" value = "Modifier l'étudiant">
+					<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
 				</div>
 		</form>	
 		<button id="reload" onClick="reload()">Rechargement du tableau niveau ObiWan !</button>

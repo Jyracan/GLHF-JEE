@@ -34,6 +34,7 @@ public class StudentDetailsServlet extends HttpServlet {
 		String buttonPressed1 = request.getParameter("chercher"); //pour savoir sur quel bouton on a cliqué
 		String buttonPressed2 = request.getParameter("modifier");
 		String buttonPressed3 = request.getParameter("sauvegarderModifications");
+		String buttonPressed4 = request.getParameter("supprimer");
 		StudentListDAO studentListDAO = new StudentListDAO();
 		RequestDispatcher rd = null;
 		
@@ -81,6 +82,20 @@ public class StudentDetailsServlet extends HttpServlet {
 			} catch (ServletException | IOException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		else if(buttonPressed4 != null) {
+			
+			String searchText = request.getParameter("searchText");
+			Etudiant etudiant = studentListDAO.getStudentDetail(searchText);	
+			studentListDAO.deleteSudent(etudiant);
+			JOptionPane.showMessageDialog(null,"Etudiant supprimé");
+			rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");
+			try {
+				rd.forward(request, response);
+			}catch(ServletException | IOException e) {
+				e.printStackTrace();
+			}	
 		}
 		
 		else
