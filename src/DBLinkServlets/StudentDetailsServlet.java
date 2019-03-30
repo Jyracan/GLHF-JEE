@@ -1,7 +1,7 @@
 package DBLinkServlets;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import DataAccessObjects.Etudiant;
 import DataAccessObjects.StudentListDAO;
@@ -33,47 +34,75 @@ public class StudentDetailsServlet extends HttpServlet {
 		String buttonPressed1 = request.getParameter("chercher"); //pour savoir sur quel bouton on a cliqué
 		String buttonPressed2 = request.getParameter("modifier");
 		String buttonPressed3 = request.getParameter("sauvegarderModifications");
-		RequestDispatcher rd = null;
-		if(buttonPressed1!=null) {
-			rd = getServletContext().getRequestDispatcher("/StudentDetail.jsp");
-		}
-		if(buttonPressed2!=null) {
-			rd = getServletContext().getRequestDispatcher("/StudentModification.jsp");
-		}
-		String searchText = request.getParameter("searchText");
 		StudentListDAO studentListDAO = new StudentListDAO();
-		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);
+		RequestDispatcher rd = null;
 		
-		if(buttonPressed3!=null) {
-			String modified = request.getParameter("studentModified");
-			Etudiant student = studentListDAO.getStudentDetail(modified);
-			System.out.println(modified);
-			System.out.println(student);
-			studentListDAO.updateStudent(student);
-			System.out.println("Student updated");
+		if(buttonPressed2!=null) {
+			
+			String searchText = request.getParameter("searchText");
+			Etudiant etudiant = studentListDAO.getStudentDetail(searchText);
 			rd = getServletContext().getRequestDispatcher("/StudentModification.jsp");
 			try {
+				if(etudiant == null)
+				{
+					rd.forward(request, response);
+				}
+				else 
+				{
+					request.setAttribute("StudentDetail", etudiant);
+					rd.forward(request, response);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ServletException e) {
+				e.printStackTrace();
+			}
+		}
+	
+		else if(buttonPressed3!=null) {
+			
+			String[] studentProperties = {"studentModified","sexe","nom","prenom","dateNaissance","serieBac","anneeBac"
+					,"mentionBac","diplome","anneeDiplome","villeDiplome","inscription","courrielPro","courrielPerso"};
+			ArrayList<String> updateProperties = new ArrayList<>();
+			
+			for(int i = 0; i < studentProperties.length; i++) {
+				updateProperties.add(request.getParameter(studentProperties[i]));
+			}
+			
+			studentListDAO.updateStudent(updateProperties);
+			JOptionPane.showMessageDialog(null,"Etudiant modifié");
+			Etudiant etudiant = studentListDAO.getStudentDetail(updateProperties.get(2)+" "+updateProperties.get(3));
+			rd = getServletContext().getRequestDispatcher("/StudentModification.jsp");
+			
+			try {
+				request.setAttribute("StudentDetail", etudiant);
 				rd.forward(request, response);
+				
 			} catch (ServletException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
-		try {
-			if(etudiant == null)
-			{
-				rd.forward(request, response);
+		else
+		{
+			String searchText = request.getParameter("searchText");
+			Etudiant etudiant = studentListDAO.getStudentDetail(searchText);	
+			rd = getServletContext().getRequestDispatcher("/StudentDetail.jsp");
+			try {
+				if(etudiant == null)
+				{
+					rd.forward(request, response);
+				}
+				else 
+				{
+					request.setAttribute("StudentDetail", etudiant);
+					rd.forward(request, response);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ServletException e) {
+				e.printStackTrace();
 			}
-			else 
-			{
-				request.setAttribute("StudentDetail", etudiant);
-				rd.forward(request, response);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ServletException e) {
-			e.printStackTrace();
 		}
-	}
+		}	
 }

@@ -79,12 +79,25 @@ public class StudentListDAO {
     	  return etudiants.get(0);
    }
 	
-	public void updateStudent(Etudiant etudiant) {
+	public void updateStudent(ArrayList<String> updateProperties) {
 		
 		System.out.println("Beginning update");
-		deleteSudent(etudiant);
-		addStudent(etudiant);
-		System.out.println("Update done");
+		Connection connection = DBManager.getInstance().getConnection();
+		try{
+	    	  PreparedStatement pstmt = connection.prepareStatement("UPDATE Etudiant SET Etudiant.sexe = ?, Etudiant.nom = ?, Etudiant.prenom = ?, "
+	    	  		+ "Etudiant.dateNaissance = ?, Etudiant.serieBac = ?,Etudiant.anneeBac = ?, Etudiant.mentionBac = ?, Etudiant.diplome = ?,"
+	    	  		+ "Etudiant.anneeDiplome = ?, Etudiant.villeDiplome = ?, Etudiant.inscription = ?,Etudiant.courrielPro = ?, Etudiant.courrielPerso = ? WHERE Etudiant.Id = ?");	
+	    	  for(int i = 1; i < updateProperties.size(); i++) {
+	    		  pstmt.setString(i, updateProperties.get(i));
+	    	  }
+	    	  pstmt.setString(14,updateProperties.get(0)); // to get id 
+	    	  pstmt.executeUpdate();
+	    	  System.out.println("Update done");
+	      }
+		catch (SQLException e) 
+	       {
+	           e.printStackTrace();
+	       }
 	}
 	
 	public void addStudent(Etudiant etudiant) {
