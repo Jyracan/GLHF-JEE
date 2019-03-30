@@ -37,24 +37,21 @@ public class ConnexionServlet extends HttpServlet {
 		System.out.println("###############################################################################");
 		User user = new User(request.getParameter("login"), request.getParameter("password"), "12", "standard");
 		request.getSession().setAttribute("user", user);
-    	response.sendRedirect("Menu");
-		/*
+    	/*response.sendRedirect("Menu");*/
 		Connection connection = DBManagerAuth.getInstance().getConnection();
 		boolean test = false; 
 		try 
         {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT id FROM Utilisateur");
-            System.out.println(rs);
-            if( rs.getString("id") != request.getParameter("login")) {
-      	  		test = true;
-      	  	}
-            /*while(rs.next() && rs.getString("id") != request.getParameter("login"))
-            {
-          	  	if( rs.getString("id") != request.getParameter("login")) {
-          	  		test = true;
-          	  	}
+            System.out.println(request.getParameter("login"));
+            while(rs.next()) {
+	            System.out.println(rs.getString("id"));
+	            if(rs.getString("id").contentEquals(request.getParameter("login"))) {
+	      	  		test = true;
+	      	  	}
             }
+            System.out.println("test : "+ test);
             if(test) {
             	request.getSession().setAttribute("user", user);
             	response.sendRedirect("Menu");
@@ -67,7 +64,6 @@ public class ConnexionServlet extends HttpServlet {
          {
              e.printStackTrace();
          }
-         */
 	}
 	
 }
