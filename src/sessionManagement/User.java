@@ -4,8 +4,9 @@ public final class User {
 	private String login;
 	private String password;
 	private String id;
+	private String rights;	//admin, editor, standard
 	
-	public User (String login, String password, String id) {
+	public User (String login, String password, String id, String rights) {
 		this.setLogin(login);
 		this.setPassword(password);
 		this.id = id;
@@ -34,5 +35,15 @@ public final class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public String getRights() {
+		return rights;
+	}
+
+
+	public void setRights(String rights) {
+		this.rights = rights;
 	}
 }

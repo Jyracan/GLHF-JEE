@@ -38,7 +38,8 @@ public class ConnexionServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("###############################################################################");
-		User user = new User(request.getParameter("login"), request.getParameter("password"), "12");
+		//System.out.println("Bonjour".indexOf("jr"));
+		User user = new User(request.getParameter("login"), request.getParameter("password"), "12", "admin");
 		Connection connection = DBManagerAuth.getInstance().getConnection();
 		boolean test = false; 
 		try 

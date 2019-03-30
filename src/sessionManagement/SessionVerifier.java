@@ -24,9 +24,18 @@ public final class SessionVerifier {
 	}
 	
 	public boolean verify(HttpServletRequest request, HttpServletResponse response) {
-		if (request.getSession().getAttribute("user") == null) {
+		User usr = (User) request.getSession().getAttribute("user");
+		if (usr == null) {
 			try {
 				response.sendRedirect("Connexion");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return true;
+		} else if (request.getRequestURI().indexOf("admin") == 1 && usr.getRights() != "admin") {
+			try {
+				response.sendRedirect("PermissionInsuffisante");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

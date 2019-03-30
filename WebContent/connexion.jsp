@@ -11,10 +11,10 @@
 		<!--  <form action="ConnexionServlet" method="post">-->
 		<form action="Connexion" method="post">
 			<div>
-				<input type="text" id="login" placeholder="Ton nom !">
+				<input type="text" name="login" placeholder="Ton nom !">
 			</div>
 			<div>
-				<input type="password" id="password" placeholder="Ton mot de passe !">
+				<input type="password" name="password" placeholder="Ton mot de passe !">
 			</div>
 			<div>
 				<input type="submit" value="Connexion">
