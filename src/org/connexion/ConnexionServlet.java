@@ -47,13 +47,15 @@ public class ConnexionServlet extends HttpServlet {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT id FROM Utilisateur");
             System.out.println(rs);
-            
-            while(rs.next() && rs.getString("id") != request.getParameter("login"))
+            if( rs.getString("id") != request.getParameter("login")) {
+      	  		test = true;
+      	  	}
+            /*while(rs.next() && rs.getString("id") != request.getParameter("login"))
             {
           	  	if( rs.getString("id") != request.getParameter("login")) {
           	  		test = true;
           	  	}
-            }
+            }*/
             if(test) {
             	request.getSession().setAttribute("user", user);
             	response.sendRedirect("Menu");
