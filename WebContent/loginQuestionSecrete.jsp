@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>Veuillez indiquer votre identifiant</div>
-		<form action="QuestionSecrete" method="post">
+		<form action="LoginQuestionSecrete" method="post">
 			<div>
 				<input type="text" name="login" placeholder="Ton nom !">
 			</div>
