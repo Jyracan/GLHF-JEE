@@ -35,7 +35,6 @@ public class ConnexionServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("###############################################################################");
-		//System.out.println("Bonjour".indexOf("jr"));
 		User user = new User(request.getParameter("login"), request.getParameter("password"), "12", "standard");
 		request.getSession().setAttribute("user", user);
     	response.sendRedirect("Menu");
