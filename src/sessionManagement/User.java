@@ -10,6 +10,7 @@ public final class User {
 		this.setLogin(login);
 		this.setPassword(password);
 		this.id = id;
+		this.rights = rights;
 	}
 	
 	

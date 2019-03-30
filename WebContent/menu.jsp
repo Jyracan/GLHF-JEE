@@ -14,7 +14,7 @@
 	<form action="">
 		<input type="submit" value="visualisation des groupes">
 	</form>
-	<form action="Deconnexion">
+	<form action="/ProjetJEE/Deconnexion">
 		<input type="submit" value="deconnexion">
 	</form>
 </body>

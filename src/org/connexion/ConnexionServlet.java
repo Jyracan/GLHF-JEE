@@ -8,12 +8,9 @@ import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import DataAccessObjects.DBManagerAuth;
 import sessionManagement.User;
 
@@ -39,7 +36,10 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("###############################################################################");
 		//System.out.println("Bonjour".indexOf("jr"));
-		User user = new User(request.getParameter("login"), request.getParameter("password"), "12", "admin");
+		User user = new User(request.getParameter("login"), request.getParameter("password"), "12", "standard");
+		request.getSession().setAttribute("user", user);
+    	response.sendRedirect("Menu");
+		/*
 		Connection connection = DBManagerAuth.getInstance().getConnection();
 		boolean test = false; 
 		try 
@@ -55,7 +55,7 @@ public class ConnexionServlet extends HttpServlet {
           	  	if( rs.getString("id") != request.getParameter("login")) {
           	  		test = true;
           	  	}
-            }*/
+            }
             if(test) {
             	request.getSession().setAttribute("user", user);
             	response.sendRedirect("Menu");
@@ -68,6 +68,7 @@ public class ConnexionServlet extends HttpServlet {
          {
              e.printStackTrace();
          }
+         */
 	}
 	
 }

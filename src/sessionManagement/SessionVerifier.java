@@ -2,9 +2,6 @@ package sessionManagement;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,17 +22,18 @@ public final class SessionVerifier {
 	
 	public boolean verify(HttpServletRequest request, HttpServletResponse response) {
 		User usr = (User) request.getSession().getAttribute("user");
+		String uri = request.getRequestURI();
 		if (usr == null) {
 			try {
-				response.sendRedirect("Connexion");
+				response.sendRedirect("/ProjetJEE/Connexion");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return true;
-		} else if (request.getRequestURI().indexOf("admin") == 1 && usr.getRights() != "admin") {
+		} else if ((uri.indexOf("admin") == 11 && usr.getRights() != "admin") || (uri.indexOf("editor") == 11 && usr.getRights() == "standard")) {
 			try {
-				response.sendRedirect("PermissionInsuffisante");
+				response.sendRedirect("/ProjetJEE/PermissionInsuffisante");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
