@@ -23,14 +23,14 @@ CREATE SCHEMA IF NOT EXISTS `Authentification` ;
 USE `Etudiant` ;
 
 -- -----------------------------------------------------
--- Table `Etudiant`.`Étudiant`
+-- Table `Etudiant`.`Etudiant`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Etudiant`.`Étudiant` (
+CREATE TABLE IF NOT EXISTS `Etudiant`.`Etudiant` (
   `id` VARCHAR(9) NOT NULL,
   `sexe` VARCHAR(1) NULL,
   `nom` VARCHAR(45) NOT NULL,
   `prenom` VARCHAR(45) NOT NULL,
-  `dateNaissance` DATE NULL,
+  `dateNaissance` VARCHAR(45) NULL,
   `serieBac` VARCHAR(10) NULL,
   `anneeBac` INT NULL,
   `mentionBac` VARCHAR(2) NULL,
@@ -57,20 +57,20 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Etudiant`.`Étudiant_has_Groupe`
+-- Table `Etudiant`.`Etudiant_has_Groupe`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Etudiant`.`Étudiant_has_Groupe` (
-  `Étudiant_id` VARCHAR(9) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Etudiant`.`Etudiant_has_Groupe` (
+  `Etudiant_id` VARCHAR(9) NOT NULL,
   `Groupe_idGroupe` INT NOT NULL,
-  PRIMARY KEY (`Étudiant_id`, `Groupe_idGroupe`),
-  INDEX `fk_Étudiant_has_Groupe_Groupe1_idx` (`Groupe_idGroupe` ASC),
-  INDEX `fk_Étudiant_has_Groupe_Étudiant_idx` (`Étudiant_id` ASC),
-  CONSTRAINT `fk_Étudiant_has_Groupe_Étudiant`
-    FOREIGN KEY (`Étudiant_id`)
-    REFERENCES `Etudiant`.`Étudiant` (`id`)
+  PRIMARY KEY (`Etudiant_id`, `Groupe_idGroupe`),
+  INDEX `fk_Etudiant_has_Groupe_Groupe1_idx` (`Groupe_idGroupe` ASC),
+  INDEX `fk_Etudiant_has_Groupe_Etudiant_idx` (`Etudiant_id` ASC),
+  CONSTRAINT `fk_Etudiant_has_Groupe_Etudiant`
+    FOREIGN KEY (`Etudiant_id`)
+    REFERENCES `Etudiant`.`Etudiant` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Étudiant_has_Groupe_Groupe1`
+  CONSTRAINT `fk_Etudiant_has_Groupe_Groupe1`
     FOREIGN KEY (`Groupe_idGroupe`)
     REFERENCES `Etudiant`.`Groupe` (`idGroupe`)
     ON DELETE NO ACTION
