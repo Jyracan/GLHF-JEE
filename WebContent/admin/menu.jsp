@@ -14,6 +14,9 @@
 	<form action="">
 		<input type="submit" value="visualisation des groupes">
 	</form>
+	<form action="UsersManagement">
+		<input type="submit" value="Gestion des utilisateurs">
+	</form>
 	<form action="/ProjetJEE/Deconnexion">
 		<input type="submit" value="deconnexion">
 	</form>

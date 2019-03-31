@@ -39,7 +39,7 @@ public class UsersManagementServlet extends HttpServlet {
              e.printStackTrace();
          }
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/UsersListe.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/UsersList.jsp");
 		request.setAttribute("usersList", users);
 		try {
 			rd.forward(request, response);
