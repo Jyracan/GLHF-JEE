@@ -32,8 +32,20 @@ public class ChangementPasswordServlet extends HttpServlet{
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/changementPassword.jsp");
 		String password = request.getParameter("psw");
 		String passwordConfirmation = request.getParameter("pswConfirmation");
+		/*Si les deux mots de passe concordent, alors on modifie le mot de passe dans la bdd*/
 		if(password.contentEquals(passwordConfirmation)) {
-			System.out.println("egaux");
+			try {
+	            Statement statement = connection.createStatement();
+	            String id = (String) request.getSession().getAttribute("login");
+	            System.out.println(id);
+	            String query = "update Utilisateur set mdp=\"" + password +"\" where id=\"" + id+"\"";
+	            System.out.println(query);
+				int rs = statement.executeUpdate(query);
+			}
+			catch (SQLException e) 
+	         {
+	             e.printStackTrace();
+	         }
 		}
 		try {
 			rd.forward(request, response);
