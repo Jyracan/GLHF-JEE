@@ -23,14 +23,14 @@ CREATE SCHEMA IF NOT EXISTS `Authentification` ;
 USE `Etudiant` ;
 
 -- -----------------------------------------------------
--- Table `Etudiant`.`Etudiant`
+-- Table `Etudiant`.`Étudiant`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Etudiant`.`Etudiant` (
+CREATE TABLE IF NOT EXISTS `Etudiant`.`Étudiant` (
   `id` VARCHAR(9) NOT NULL,
   `sexe` VARCHAR(1) NULL,
   `nom` VARCHAR(45) NOT NULL,
   `prenom` VARCHAR(45) NOT NULL,
-  `dateNaissance` VARCHAR(45) NULL,
+  `dateNaissance` DATE NULL,
   `serieBac` VARCHAR(10) NULL,
   `anneeBac` INT NULL,
   `mentionBac` VARCHAR(2) NULL,
@@ -51,14 +51,15 @@ COMMENT = 'use';
 CREATE TABLE IF NOT EXISTS `Etudiant`.`Groupe` (
   `idGroupe` INT NOT NULL,
   `nomGroupe` VARCHAR(45) NOT NULL,
+  `redacteur` VARCHAR(10) NULL,
   PRIMARY KEY (`idGroupe`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Etudiant`.`Etudiant_has_Groupe`
+-- Table `Etudiant`.`Étudiant_has_Groupe`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Etudiant`.`Etudiant_has_Groupe` (
+CREATE TABLE IF NOT EXISTS `Etudiant`.`Étudiant_has_Groupe` (
   `Étudiant_id` VARCHAR(9) NOT NULL,
   `Groupe_idGroupe` INT NOT NULL,
   PRIMARY KEY (`Étudiant_id`, `Groupe_idGroupe`),
@@ -108,27 +109,11 @@ CREATE TABLE IF NOT EXISTS `Authentification`.`Utilisateur` (
   `mdp` VARCHAR(8) NOT NULL,
   `qSecrete` VARCHAR(45) NOT NULL,
   `rqSecrete` VARCHAR(45) NOT NULL,
+  `droits` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `Authentification`.`Droits`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Authentification`.`Droits` (
-  `Droit` INT NOT NULL,
-  `Utilisateur_id` INT NOT NULL,
-  PRIMARY KEY (`Droit`),
-  INDEX `fk_Droits_Utilisateur_idx` (`Utilisateur_id` ASC),
-  CONSTRAINT `fk_Droits_Utilisateur`
-    FOREIGN KEY (`Utilisateur_id`)
-
-    REFERENCES `Authentification`.`Utilisateur` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
