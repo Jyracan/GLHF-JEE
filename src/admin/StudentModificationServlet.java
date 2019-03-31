@@ -46,7 +46,6 @@ public class StudentModificationServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		if (SessionVerifier.getInstance().verify(request, response)) {
 			return;
 		}

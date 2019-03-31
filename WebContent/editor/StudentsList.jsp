@@ -58,10 +58,10 @@
 					<input type = "submit" value = "Chercher">
 				</div>
 		</form>	
-		<form action="StudentDeletionServlet">
+		<form action="StudentDeletion">
 			<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
 		</form>
-		<form action="StudentCreationServlet">
+		<form action="StudentCreation">
 			<input type = "submit" name ="creer" value = "Créer l'étudiant">
 		</form>
 		<button id="reload" onClick="reload()">Rechargement du tableau niveau ObiWan !</button>

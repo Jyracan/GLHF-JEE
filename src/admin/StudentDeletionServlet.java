@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 import DataAccessObjects.Etudiant;
 import DataAccessObjects.StudentListDAO;
+import sessionManagement.SessionVerifier;
 
 public class StudentDeletionServlet extends HttpServlet {
 
@@ -24,6 +25,10 @@ public class StudentDeletionServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
+		if (SessionVerifier.getInstance().verify(request, response)) {
+			return;
+		}
+		
 		StudentListDAO studentListDAO = new StudentListDAO();
 		RequestDispatcher rd = null;
 		String searchText = request.getParameter("searchText");

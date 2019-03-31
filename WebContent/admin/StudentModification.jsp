@@ -30,7 +30,7 @@
             String courrielPro = etudiant.getCourrielPro();
             String courrielPerso = etudiant.getCourrielPerso();
        %>
-<form action = "StudentModificationServlet" method = "post">
+<form action = "StudentModification" method = "post">
 	<div>
 		<p>ID de l'étudiant : <%= etudiant.getId() %></p>
 	</div>

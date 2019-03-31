@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>GLHF-JEE</display-name>
-  
-  
-  <!-- 
-  		Servlets public
-  -->
   <servlet>
     <display-name>Connexion</display-name>
     <servlet-name>Connexion</servlet-name>
@@ -15,7 +10,6 @@
     <servlet-name>Connexion</servlet-name>
     <url-pattern>/Connexion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>Deconnexion</display-name>
     <servlet-name>Deconnexion</servlet-name>
@@ -25,7 +19,6 @@
     <servlet-name>Deconnexion</servlet-name>
     <url-pattern>/Deconnexion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>PermissionInsuffisante</display-name>
     <servlet-name>PermissionInsuffisante</servlet-name>
@@ -35,7 +28,6 @@
     <servlet-name>PermissionInsuffisante</servlet-name>
     <url-pattern>/PermissionInsuffisante</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>QuestionSecrete</display-name>
     <servlet-name>QuestionSecrete</servlet-name>
@@ -45,7 +37,6 @@
     <servlet-name>QuestionSecrete</servlet-name>
     <url-pattern>/QuestionSecrete</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>LoginQuestionSecrete</display-name>
     <servlet-name>LoginQuestionSecrete</servlet-name>
@@ -55,7 +46,6 @@
     <servlet-name>LoginQuestionSecrete</servlet-name>
     <url-pattern>/LoginQuestionSecrete</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>ChangementPassword</display-name>
     <servlet-name>ChangementPassword</servlet-name>
@@ -65,11 +55,6 @@
     <servlet-name>ChangementPassword</servlet-name>
     <url-pattern>/ChangementPassword</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- 
-  		Servlets standards 
-  -->
   <servlet>
     <display-name>Menu</display-name>
     <servlet-name>standard_Menu</servlet-name>
@@ -79,7 +64,6 @@
     <servlet-name>standard_Menu</servlet-name>
     <url-pattern>/standard/Menu</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>Liste des étudiants</display-name>
     <servlet-name>standard_StudentVisualizationServlet</servlet-name>
@@ -89,7 +73,6 @@
     <servlet-name>standard_StudentVisualizationServlet</servlet-name>
     <url-pattern>/standard/StudentVisualizationServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>Details d'un étudiant</display-name>
     <servlet-name>standard_StudentDetailsServlet</servlet-name>
@@ -99,11 +82,6 @@
     <servlet-name>standard_StudentDetailsServlet</servlet-name>
     <url-pattern>/standard/StudentDetails</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- 
-  		Servlets admin 
-  -->
   <servlet>
     <display-name>Menu</display-name>
     <servlet-name>admin_menu</servlet-name>
@@ -113,7 +91,6 @@
     <servlet-name>admin_menu</servlet-name>
     <url-pattern>/admin/Menu</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>StudentVisualizationServlet</display-name>
     <servlet-name>admin_StudentVisualizationServlet</servlet-name>
@@ -123,8 +100,7 @@
     <servlet-name>admin_StudentVisualizationServlet</servlet-name>
     <url-pattern>/admin/StudentVisualizationServlet</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <display-name>Details d'un étudiant</display-name>
     <servlet-name>admin_StudentDetailsServlet</servlet-name>
     <servlet-class>admin.StudentDetailsServlet</servlet-class>
@@ -133,7 +109,6 @@
     <servlet-name>admin_StudentDetailsServlet</servlet-name>
     <url-pattern>/admin/StudentDetails</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>Suppression d'un étudiant</display-name>
     <servlet-name>admin_StudentDeletionServlet</servlet-name>
@@ -143,7 +118,6 @@
     <servlet-name>admin_StudentDeletionServlet</servlet-name>
     <url-pattern>/admin/StudentDeletion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>Création d'un étudiant</display-name>
     <servlet-name>admin_StudentCreationServlet</servlet-name>
@@ -153,7 +127,6 @@
     <servlet-name>admin_StudentCreationServlet</servlet-name>
     <url-pattern>/admin/StudentCreation</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>Modification d'un étudiant</display-name>
     <servlet-name>admin_StudentModificationServlet</servlet-name>
@@ -163,14 +136,6 @@
     <servlet-name>admin_StudentModificationServlet</servlet-name>
     <url-pattern>/admin/StudentModification</url-pattern>
   </servlet-mapping>
-  
-  
-  <!-- 
-  		Servlets editor
-  -->
-  
-  
-  <!-- trucs inconnus ? -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

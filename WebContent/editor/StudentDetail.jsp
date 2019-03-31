@@ -62,7 +62,7 @@
 			<td><%=courrielPerso %></td>
 		</tr>
 	</table>
-	<form action="StudentModifcationServlet" method= "get">
+	<form action="StudentModification" method= "get">
 		<input type = "submit" name ="modifier" value = "Modifier l'étudiant">
 	</form>
 </body>

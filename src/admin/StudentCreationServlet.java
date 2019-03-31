@@ -12,10 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 
 import DataAccessObjects.StudentListDAO;
+import sessionManagement.SessionVerifier;
 
 public class StudentCreationServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (SessionVerifier.getInstance().verify(request, response)) {
+			return;
+		}
+		
 		StudentListDAO studentListDAO = new StudentListDAO();
 		RequestDispatcher rd = null;
 		
@@ -31,6 +36,9 @@ public class StudentCreationServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (SessionVerifier.getInstance().verify(request, response)) {
+			return;
+		}
 		
 		StudentListDAO studentListDAO = new StudentListDAO();
 		RequestDispatcher rd = null;
