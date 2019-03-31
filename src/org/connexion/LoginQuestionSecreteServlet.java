@@ -51,7 +51,8 @@ public class LoginQuestionSecreteServlet extends HttpServlet{
             }
             System.out.println("test : "+ test);
             if(test) {
-            	response.sendRedirect("QuestionSecrete");
+            	request.getSession().setAttribute("login", request.getParameter("login"));
+            	response.sendRedirect("QuestionSecrete");            
             }
             else {
             	response.sendRedirect("Connexion");
@@ -63,16 +64,6 @@ public class LoginQuestionSecreteServlet extends HttpServlet{
          }
 	}
 	
-	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginQuestionSecrete.jsp");
-		try {
-			rd.forward(request, response);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
-	}
 
 	
 }

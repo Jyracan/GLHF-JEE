@@ -30,12 +30,12 @@
   </servlet-mapping>
   <servlet>
     <display-name>Menu</display-name>
-    <servlet-name>Menu</servlet-name>
-    <servlet-class>org.connexion.MenuServlet</servlet-class>
+    <servlet-name>standard_Menu</servlet-name>
+    <servlet-class>standard.MenuServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Menu</servlet-name>
-    <url-pattern>/Menu</url-pattern>
+    <servlet-name>standard_Menu</servlet-name>
+    <url-pattern>/standard/Menu</url-pattern>
   </servlet-mapping>
   <servlet>
     <display-name>QuestionSecrete</display-name>

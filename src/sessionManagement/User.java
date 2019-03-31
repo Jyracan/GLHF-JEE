@@ -3,19 +3,12 @@ package sessionManagement;
 public final class User {
 	private String login;
 	private String password;
-	private String id;
 	private String rights;	//admin, editor, standard
 	
-	public User (String login, String password, String id, String rights) {
+	public User (String login, String password, String rights) {
 		this.setLogin(login);
 		this.setPassword(password);
-		this.id = id;
 		this.rights = rights;
-	}
-	
-	
-	public String getId() {
-		return id;
 	}
 
 

@@ -1,4 +1,4 @@
-package org.connexion;
+package standard;
 
 import java.io.IOException;
 
@@ -26,7 +26,7 @@ public class MenuServlet extends HttpServlet {
 			return;
 		}
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/standard_menu.jsp");
 		
 		try {
 			rd.forward(request, response);
