@@ -53,7 +53,7 @@ public class StudentCreationServlet extends HttpServlet {
 		
 		studentListDAO.addStudent(updateProperties);
 		JOptionPane.showMessageDialog(null,"Etudiant créé");
-		rd = getServletContext().getRequestDispatcher("/StudentsList.jsp");
+		rd = getServletContext().getRequestDispatcher("/editor/StudentsList.jsp");
 		
 		try {
 			rd.forward(request, response);
