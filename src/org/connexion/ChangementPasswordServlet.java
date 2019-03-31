@@ -14,11 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import DataAccessObjects.DBManagerAuth;
 
-public class QuestionSecreteServlet extends HttpServlet {
+public class ChangementPasswordServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection connection = DBManagerAuth.getInstance().getConnection();
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/questionSecrete.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/changementPassword.jsp");
 		try {
 			rd.forward(request, response);
 		} catch (IOException e) {
@@ -29,12 +28,19 @@ public class QuestionSecreteServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String reponseSecrete = (String) request.getParameter("rqSecrete");
-		String rqSecrete = (String) request.getSession().getAttribute("rqSecrete");
-		if(reponseSecrete.contentEquals(rqSecrete)) {
-			response.sendRedirect("ChangementPassword");
-		}else {
-			response.sendRedirect("Connexion");
+		Connection connection = DBManagerAuth.getInstance().getConnection();
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/changementPassword.jsp");
+		String password = request.getParameter("psw");
+		String passwordConfirmation = request.getParameter("pswConfirmation");
+		if(password.contentEquals(passwordConfirmation)) {
+			System.out.println("egaux");
+		}
+		try {
+			rd.forward(request, response);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
 		}
 	}
 }
