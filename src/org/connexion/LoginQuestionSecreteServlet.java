@@ -41,17 +41,23 @@ public class LoginQuestionSecreteServlet extends HttpServlet{
 		try 
         {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT id FROM Utilisateur");
-            System.out.println(request.getParameter("login"));
+            ResultSet rs = statement.executeQuery("SELECT id, qSecrete, rqSecrete FROM Utilisateur");
+            String qSecrete = null;
+            String rqSecrete = null;
             while(rs.next()) {
 	            System.out.println(rs.getString("id"));
 	            if(rs.getString("id").contentEquals(request.getParameter("login"))) {
 	      	  		test = true;
+	      	  		qSecrete = rs.getString("qSecrete");
+	      	  		rqSecrete = rs.getString("rqSecrete");
 	      	  	}
             }
             System.out.println("test : "+ test);
             if(test) {
+            	/*Envoie du login, de la question secrète et de la réponse secrète via la session pour la page de la question secrète*/
             	request.getSession().setAttribute("login", request.getParameter("login"));
+            	request.getSession().setAttribute("qSecrete", qSecrete);
+            	request.getSession().setAttribute("rqSecrete", rqSecrete);
             	response.sendRedirect("QuestionSecrete");            
             }
             else {

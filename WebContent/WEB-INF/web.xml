@@ -65,6 +65,16 @@
     <url-pattern>/LoginQuestionSecrete</url-pattern>
   </servlet-mapping>
   <servlet>
+    <display-name>ChangementPassword</display-name>
+    <servlet-name>ChangementPassword</servlet-name>
+    <servlet-class>org.connexion.ChangementPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangementPassword</servlet-name>
+    <url-pattern>/ChangementPassword</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <display-name>StudentVisualizationServlet</display-name>
     <servlet-name>StudentVisualizationServlet</servlet-name>
     <servlet-class>admin.StudentVisualizationServlet</servlet-class>
