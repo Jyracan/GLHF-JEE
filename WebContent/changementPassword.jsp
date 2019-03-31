@@ -19,5 +19,10 @@
 				<input type="submit" value="Valider le nouveau mot de passe">
 			</div>
 	</form>
+	<form action="Connexion" method="get">
+			<div>
+				<input type="submit" value="Se connecter">
+			</div>
+	</form>
 </body>
 </html>
