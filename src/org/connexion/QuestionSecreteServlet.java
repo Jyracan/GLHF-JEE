@@ -29,7 +29,13 @@ public class QuestionSecreteServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
+		String reponseSecrete = (String) request.getParameter("rqSecrete");
+		String rqSecrete = (String) request.getSession().getAttribute("rqSecrete");
+		if(reponseSecrete.contentEquals(rqSecrete)) {
+			response.sendRedirect("QuestionSecrete");
+		}else {
+			response.sendRedirect("Connexion");
+		}
 	}
 	
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {

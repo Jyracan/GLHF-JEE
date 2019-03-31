@@ -54,6 +54,7 @@ public class LoginQuestionSecreteServlet extends HttpServlet{
             }
             System.out.println("test : "+ test);
             if(test) {
+            	/*Envoie du login, de la question secrète et de la réponse secrète via la session pour la page de la question secrète*/
             	request.getSession().setAttribute("login", request.getParameter("login"));
             	request.getSession().setAttribute("qSecrete", qSecrete);
             	request.getSession().setAttribute("rqSecrete", rqSecrete);

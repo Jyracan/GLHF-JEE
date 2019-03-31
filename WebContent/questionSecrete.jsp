@@ -16,7 +16,7 @@
     </p>
 	<form action="QuestionSecrete" method="post">
 			<div>
-				<input type="text" name="qSecrete" placeholder="réponse à la question secrète">
+				<input type="text" name="rqSecrete" placeholder="réponse à la question secrète">
 			</div>
 			<div>
 				<input type="submit" value="Valider réponse secrète">
