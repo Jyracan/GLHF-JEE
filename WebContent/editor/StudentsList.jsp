@@ -59,6 +59,7 @@
 				</div>
 		</form>	
 		<form action="StudentDeletion">
+			<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
 			<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
 		</form>
 		<form action="StudentCreation">

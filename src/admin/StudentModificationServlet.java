@@ -61,13 +61,13 @@ public class StudentModificationServlet extends HttpServlet {
 		String id = etudiant.getId();
 		updateProperties.add(id);
 		
-		for(int i = 1; i < studentProperties.length; i++) {
-			updateProperties.add(request.getParameter(studentProperties[i]));
+		for(int i = 1; i <= studentProperties.length; i++) {
+			updateProperties.add(request.getParameter(studentProperties[i-1]));
 		}
 		
 		studentListDAO.updateStudent(updateProperties);
 		JOptionPane.showMessageDialog(null,"Etudiant modifié");
-		rd = getServletContext().getRequestDispatcher("/editor/StudentList.jsp");
+		rd = getServletContext().getRequestDispatcher("/editor/StudentsList.jsp");
 		
 		try {
 			rd.forward(request, response);

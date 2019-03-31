@@ -12,7 +12,7 @@
 	<h3>Bienvenue dans l'outil de création d'un étudiant</h3>
 </div>
 
-<form action = "StudentDetailsServlet" method = "post">
+<form action = "StudentCreation" method = "post">
 	<div>
 		<label for="id" >ID : </label>
 		<input type="text" name="id" placeholder="9 characters (figures and letters)" >
