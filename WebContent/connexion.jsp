@@ -20,7 +20,7 @@
 				<input type="submit" value="Connexion">
 			</div>
 		</form>
-		<form action="QuestionSecrete" method="post">
+		<form action="LoginQuestionSecrete" method="get">
 			<div>
 				<input type="submit" value="J'ai oublié mon mot de passe">
 			</div>
