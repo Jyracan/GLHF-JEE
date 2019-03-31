@@ -15,7 +15,6 @@ import DataAccessObjects.Etudiant;
 import DataAccessObjects.StudentListDAO;
 import sessionManagement.SessionVerifier;
 
-@WebServlet("/StudentDetailsServlet")
 public class StudentDetailsServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
