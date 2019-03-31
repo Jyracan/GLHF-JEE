@@ -51,15 +51,19 @@
 	</head>
 	<body onload="loadTable()">
 		<div>Bienvenue dans l'interface de visualisation des étudiants</div>
-		<form action="StudentDetailsServlet" method="post">
+		<form action="StudentDetails" method="post">
 				<div>
 					<label for="name" >Afficher le détail d'un étudiant : </label>
 					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
 					<input type = "submit" value = "Chercher">
-					<input type = "submit" name ="modifier" value = "Modifier l'étudiant">
-					<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
 				</div>
 		</form>	
+		<form action="StudentDeletionServlet">
+			<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
+		</form>
+		<form action="StudentCreationServlet">
+			<input type = "submit" name ="creer" value = "Créer l'étudiant">
+		</form>
 		<button id="reload" onClick="reload()">Rechargement du tableau niveau ObiWan !</button>
 		<div >Liste des étudiants :</div>	
 		<table id="tableau" border="1" ">

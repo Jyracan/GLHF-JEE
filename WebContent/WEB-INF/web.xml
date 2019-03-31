@@ -38,6 +38,15 @@
     <url-pattern>/standard/Menu</url-pattern>
   </servlet-mapping>
   <servlet>
+    <display-name>Menu</display-name>
+    <servlet-name>admin_menu</servlet-name>
+    <servlet-class>admin.MenuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin_menu</servlet-name>
+    <url-pattern>/admin/Menu</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <display-name>QuestionSecrete</display-name>
     <servlet-name>QuestionSecrete</servlet-name>
     <servlet-class>org.connexion.QuestionSecreteServlet</servlet-class>
@@ -58,11 +67,47 @@
   <servlet>
     <display-name>StudentVisualizationServlet</display-name>
     <servlet-name>StudentVisualizationServlet</servlet-name>
-    <servlet-class>DBLinkServlets.StudentVisualizationServlet</servlet-class>
+    <servlet-class>admin.StudentVisualizationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>StudentVisualizationServlet</servlet-name>
-    <url-pattern>/StudentVisualizationServlet</url-pattern>
+    <url-pattern>/admin/StudentVisualizationServlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <display-name>Details d'un étudiant</display-name>
+    <servlet-name>admin_StudentDetailsServlet</servlet-name>
+    <servlet-class>admin.StudentDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin_StudentDetailsServlet</servlet-name>
+    <url-pattern>/admin/StudentDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Suppression d'un étudiant</display-name>
+    <servlet-name>admin_StudentDeletionServlet</servlet-name>
+    <servlet-class>admin.StudentDeletionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin_StudentDeletionServlet</servlet-name>
+    <url-pattern>/admin/StudentDeletion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Création d'un étudiant</display-name>
+    <servlet-name>admin_StudentCreationServlet</servlet-name>
+    <servlet-class>admin.StudentCreationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin_StudentCreationServlet</servlet-name>
+    <url-pattern>/admin/StudentCreation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Modification d'un étudiant</display-name>
+    <servlet-name>admin_StudentModificationServlet</servlet-name>
+    <servlet-class>admin.StudentModificationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin_StudentModificationServlet</servlet-name>
+    <url-pattern>/admin/StudentModification</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

@@ -23,6 +23,7 @@ public final class SessionVerifier {
 	public boolean verify(HttpServletRequest request, HttpServletResponse response) {
 		User usr = (User) request.getSession().getAttribute("user");
 		String uri = request.getRequestURI();
+		System.out.println(uri);
 		if (usr == null) {
 			try {
 				response.sendRedirect("/ProjetJEE/Connexion");
@@ -31,7 +32,7 @@ public final class SessionVerifier {
 				e.printStackTrace();
 			}
 			return true;
-		} else if ((uri.indexOf("admin") == 11 && usr.getRights() != "admin") || (uri.indexOf("editor") == 11 && usr.getRights() == "standard")) {
+		} else if ((uri.indexOf("admin") == 11 && !usr.getRights().equals("admin")) || (uri.indexOf("editor") == 11 && usr.getRights().equals("standard"))) {
 			try {
 				response.sendRedirect("/ProjetJEE/PermissionInsuffisante");
 			} catch (IOException e) {

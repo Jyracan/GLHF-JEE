@@ -100,25 +100,10 @@ public class StudentListDAO {
 	       }
 	}
 	
-	public void addStudent(Etudiant etudiant) {
+	public void addStudent(ArrayList<String> parameters) {
 		
 		Connection connection = DBManager.getInstance().getConnection();
-		ArrayList<String> parameters = new ArrayList<String>();
 		
-		parameters.add(etudiant.getId());
-		parameters.add(etudiant.getSexe());
-		parameters.add(etudiant.getNom());
-		parameters.add(etudiant.getPrenom());
-		parameters.add(etudiant.getDateNaissance());
-		parameters.add(etudiant.getSerieBac());
-		parameters.add(Integer.toString(etudiant.getAnneeBac()));
-        parameters.add(etudiant.getMentionBac());
-        parameters.add(etudiant.getDiplome());
-        parameters.add(Integer.toString(etudiant.getAnneeDiplome()));
-        parameters.add(etudiant.getVilleDiplome());
-        parameters.add(Integer.toString(etudiant.getInscription()));
-        parameters.add(etudiant.getCourrielPro());
-        parameters.add(etudiant.getCourrielPerso());
 		
 		try{
 	    	  PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Etudiant (id,sexe, nom, prenom, dateNaissance, serieBac,"
