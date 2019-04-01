@@ -1,3 +1,4 @@
+package admin;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,7 @@ public class CreationGroupeServlet extends HttpServlet {
 			return;
 		}
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/creationGroupe.jsp");
+		RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/creationGroupe.jsp");
 		
 		try {
 			rd.forward(request, response);

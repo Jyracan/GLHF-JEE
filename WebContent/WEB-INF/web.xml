@@ -79,11 +79,11 @@
   <servlet>
     <display-name>CreationGroupe</display-name>
     <servlet-name>CreationGroupe</servlet-name>
-    <servlet-class>CreationGroupeServlet</servlet-class>
+    <servlet-class>admin.CreationGroupeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GestionGroupe</servlet-name>
-    <url-pattern>/CreationGroupe</url-pattern>
+    <url-pattern>/admin/CreationGroupe</url-pattern>
   </servlet-mapping>
   
   <servlet>
