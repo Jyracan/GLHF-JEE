@@ -116,3 +116,12 @@ INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionB
 INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('ze07x4m2x','M','Bailey','Thomas','12/12/1995','STL',2008,'AB','CPGE/MP',2010,'Lille',2011,'Thomas.Bailey@bigCorp.com','Thomas.Bailey@lol.com');
 INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('w91qubnq3','M','Butler','Robert','8/11/1995','STL',2008,'B','CPGE/PC',2010,'Strasbourg',2011,'Robert.Butler@bigCorp.com','Robert.Butler@lol.com');
 INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('ivjnkb1c5','M','Potter','Morgan','1/14/1995','STL',2008,'TB','CPGE/PSI',2010,'Nantes',2011,'Morgan.Potter@bigCorp.com','Morgan.Potter@lol.com');
+
+
+
+-- ----------------------------------------------------
+-- Insertion of values into Groupe
+-- -----------------------------------------------------
+INSERT INTO
+Groupe(idGroupe, nomGroupe,redacteur) 
+VALUES (0, "fille", "root");
