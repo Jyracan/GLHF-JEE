@@ -46,19 +46,16 @@
 	</head>
 	<body onload="loadTable()">
 		<div>Bienvenue dans l'interface de visualisation des étudiants</div>
-		<form action="StudentDetails" method="post">
+		<form action="Redirection" method="post">
 				<div>
 					<label for="name" >Afficher le détail d'un étudiant :</label>
 					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
-					<input type = "submit" value = "Chercher">
+					<input type = "submit" name="chercher" value = "Chercher l'étudiant">
+					<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
 				</div>
-		</form>	
-		<form action="StudentDeletion">
-			<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
-			<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
-		</form>
+		</form>				
 		<form action="StudentCreation">
-			<input type = "submit" name ="creer" value = "Créer l'étudiant">
+			<input type = "submit" name ="creer" value = "Ajouter un nouvel étudiant">
 		</form>
 		<form action = "StudentVisualizationServlet" method = "get">
 			<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
