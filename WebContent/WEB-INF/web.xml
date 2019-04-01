@@ -87,6 +87,16 @@
   </servlet-mapping>
   
   <servlet>
+    <display-name>SuppressionGroupe</display-name>
+    <servlet-name>SuppressionGroupe</servlet-name>
+    <servlet-class>admin.SuppressionGroupeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuppressionGroupe</servlet-name>
+    <url-pattern>/admin/SuppressionGroupe</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <display-name>Liste des étudiants</display-name>
     <servlet-name>standard_StudentVisualizationServlet</servlet-name>
     <servlet-class>standard.StudentVisualizationServlet</servlet-class>
