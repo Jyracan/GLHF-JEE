@@ -122,7 +122,7 @@ INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionB
 -- ----------------------------------------------------
 -- Insertion of values into Groupe
 -- -----------------------------------------------------
-INSERT INTO Groupe(idGroupe, nomGroupe,redacteur) VALUES 
+INSERT INTO Groupe(nomGroupe,redacteur) VALUES 
 ("fille", "root"),
 ("1A", "root"),
 ("2A", "root"),
@@ -133,7 +133,7 @@ INSERT INTO Groupe(idGroupe, nomGroupe,redacteur) VALUES
 -- Insertion of values into Etudiant_has_Groupe
 -- -----------------------------------------------------
 -- Association of Students to the groupe 0
-INSERT INTO Groupe(Etudiant_id, Groupe_idGroupe) VALUES 
+INSERT INTO Etudiant_has_Groupe(Etudiant_id, Groupe_idGroupe) VALUES 
 ("w91qubnq3", 0),
 ("xm5gugisk", 0),
 ("ivjnkb1c5", 0),
