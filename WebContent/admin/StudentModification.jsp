@@ -90,5 +90,8 @@
 		<input type="submit" name="sauvegarderModifications" value="Sauvegarder les modifications ">
 	</div>
 </form>
+<form action="StudentVisualizationServlet">
+	<input type="submit" name="retour" value = "Annuler et retourner à la visualisation">
+</form>
 </body>
 </html>
