@@ -48,7 +48,7 @@
 		<div>Bienvenue dans l'interface de visualisation des étudiants</div>
 		<form action="StudentDetails" method="post">
 				<div>
-					<label for="name" >Afficher le détail d'un étudiant : </label>
+					<label for="name" >Afficher le détail d'un étudiant :</label>
 					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
 					<input type = "submit" value = "Chercher">
 				</div>
@@ -64,7 +64,7 @@
 			<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
 		</form>
 		<div >Liste des étudiants :</div>	
-		<table id="tableau" border="1" ">
+		<table id="tableau" border="1" >
 			<thead>
 				<tr>
 					<th>id</th>

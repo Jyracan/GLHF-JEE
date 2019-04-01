@@ -11,10 +11,10 @@
 <div>
 	<h3>Bienvenue dans l'outil de création d'un étudiant</h3>
 </div>
-
+<p> Les champs avec (*) sont obligatoire </p>
 <form action = "StudentCreation" method = "post">
 	<div>
-		<label for="id" >ID : </label>
+		<label for="id" >ID (*) : </label>
 		<input type="text" name="id" placeholder="9 characters (figures and letters)" >
 	</div>
 	<div>
@@ -22,11 +22,11 @@
 		<input type="text" name="sexe" placeholder="M/F" >
 	</div>
 	<div>	
-		<label for="name" >Nom : </label>
+		<label for="name" >Nom (*) : </label>
 		<input type="text" name="nom" placeholder="nom">
 	</div>
 	<div>
-		<label for="name" >Prénom : </label>
+		<label for="name" >Prénom (*) : </label>
 		<input type="text" name="prenom" placeholder="prenom">
 	</div>
 	<div>
