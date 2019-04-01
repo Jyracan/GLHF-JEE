@@ -33,12 +33,7 @@
 	                
 				<%}%>
 			}
-			function reload(){
-				var tableau = document.getElementById("tableau");
-				// TODO : Voir comment vider la table plus proprement
-				clear();
-				loadTable();
-			}
+			
 			function clear(){
 				var tableau = document.getElementById("tableau");
 				longueur = tableau.rows.length;
@@ -65,7 +60,9 @@
 		<form action="StudentCreation">
 			<input type = "submit" name ="creer" value = "Créer l'étudiant">
 		</form>
-		<button id="reload" onClick="reload()">Rechargement du tableau niveau ObiWan !</button>
+		<form action = "StudentVisualizationServlet" method = "get">
+			<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
+		</form>
 		<div >Liste des étudiants :</div>	
 		<table id="tableau" border="1" ">
 			<thead>
