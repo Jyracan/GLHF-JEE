@@ -51,7 +51,6 @@ public class StudentModificationServlet extends HttpServlet {
 		}
 		
 		StudentListDAO studentListDAO = new StudentListDAO();
-		RequestDispatcher rd = null;
 		
 		String[] studentProperties = {"sexe","nom","prenom","dateNaissance","serieBac","anneeBac"
 				,"mentionBac","diplome","anneeDiplome","villeDiplome","inscription","courrielPro","courrielPerso"};
@@ -67,14 +66,12 @@ public class StudentModificationServlet extends HttpServlet {
 		
 		studentListDAO.updateStudent(updateProperties);
 		JOptionPane.showMessageDialog(null,"Etudiant modifié");
-		rd = getServletContext().getRequestDispatcher("/editor/StudentsList.jsp");
 		
 		try {
-			rd.forward(request, response);
-			
-		} catch (ServletException | IOException e) {
+			response.sendRedirect("StudentVisualizationServlet");
+		}catch(IOException e) {
 			e.printStackTrace();
-		}
+		}	
 		
 	}
 

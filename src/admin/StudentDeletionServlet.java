@@ -30,15 +30,15 @@ public class StudentDeletionServlet extends HttpServlet {
 		}
 		
 		StudentListDAO studentListDAO = new StudentListDAO();
-		RequestDispatcher rd = null;
+	
 		String searchText = request.getParameter("searchText");
 		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);	
 		studentListDAO.deleteSudent(etudiant);
 		JOptionPane.showMessageDialog(null,"Etudiant supprimé");
-		rd = getServletContext().getRequestDispatcher("/editor/StudentsList.jsp");
+		
 		try {
-			rd.forward(request, response);
-		}catch(ServletException | IOException e) {
+			response.sendRedirect("StudentVisualizationServlet");
+		}catch(IOException e) {
 			e.printStackTrace();
 		}	
 	}

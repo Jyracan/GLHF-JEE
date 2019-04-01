@@ -116,3 +116,32 @@ INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionB
 INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('ze07x4m2x','M','Bailey','Thomas','12/12/1995','STL',2008,'AB','CPGE/MP',2010,'Lille',2011,'Thomas.Bailey@bigCorp.com','Thomas.Bailey@lol.com');
 INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('w91qubnq3','M','Butler','Robert','8/11/1995','STL',2008,'B','CPGE/PC',2010,'Strasbourg',2011,'Robert.Butler@bigCorp.com','Robert.Butler@lol.com');
 INSERT INTO Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso) VALUES ('ivjnkb1c5','M','Potter','Morgan','1/14/1995','STL',2008,'TB','CPGE/PSI',2010,'Nantes',2011,'Morgan.Potter@bigCorp.com','Morgan.Potter@lol.com');
+
+
+
+-- ----------------------------------------------------
+-- Insertion of values into Groupe
+-- -----------------------------------------------------
+INSERT INTO Groupe(nomGroupe,redacteur) VALUES 
+("fille", "root"),
+("1A", "root"),
+("2A", "root"),
+("3A", "root");
+
+
+-- ----------------------------------------------------
+-- Insertion of values into Etudiant_has_Groupe
+-- -----------------------------------------------------
+-- Association of Students to the groupe 0
+INSERT INTO Etudiant_has_Groupe(Etudiant_id, Groupe_idGroupe) VALUES 
+("w91qubnq3", 1),
+("xm5gugisk", 1),
+("ivjnkb1c5", 1),
+("6mh4kwhi4", 1);
+
+
+-- ----------------------------------------------------
+-- Insertion of values into Groupe_has_Groupe
+-- -----------------------------------------------------
+INSERT INTO Groupe_has_Groupe(idGroupeAscendant, idGroupeDescendant) VALUES 
+(1, 2);

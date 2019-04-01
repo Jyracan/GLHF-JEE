@@ -70,6 +70,8 @@
 				</tr>
 			</thead>
 		</table>
-		
+		<form action="Menu">
+			<input type="submit" name="retour" value = "Retourner au menu">
+		</form>
 	</body>
 </html>

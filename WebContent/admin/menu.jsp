@@ -7,7 +7,7 @@
 <title>GLHF-Menu</title>
 </head>
 <body>
-	<div>Bienvenue !</div>
+	<div>Bienvenue!</div>
 	<form action = "StudentVisualizationServlet" method = "post">
 		<input type="submit" value="visualisation des étudiants">
 	</form>
@@ -19,6 +19,9 @@
 	</form>
 	<form action="/ProjetJEE/Deconnexion">
 		<input type="submit" value="deconnexion">
+	</form>
+	<form action="GestionGroupe" method="get">
+		<input type="submit" value="gestion de groupe">
 	</form>
 </body>
 </html>
