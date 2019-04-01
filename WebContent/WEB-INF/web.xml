@@ -167,6 +167,15 @@
     <servlet-name>admin_UsersManagementServlet</servlet-name>
     <url-pattern>/admin/UsersManagement</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>Redirect</display-name>
+    <servlet-name>admin_RedirectionServlet</servlet-name>
+    <servlet-class>admin.RedirectionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin_RedirectionServlet</servlet-name>
+    <url-pattern>/admin/Redirection</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
