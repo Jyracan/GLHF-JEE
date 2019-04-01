@@ -61,20 +61,7 @@ public class CreationGroupeServlet extends HttpServlet {
         {
             e.printStackTrace();
         }
-		/*if(password.contentEquals(passwordConfirmation)) {
-			try {
-	            Statement statement = connection.createStatement();
-	            String id = (String) request.getSession().getAttribute("login");
-	            System.out.println(id);
-	            String query = "update Utilisateur set mdp=\"" + password +"\" where id=\"" + id+"\"";
-	            System.out.println(query);
-				int rs = statement.executeUpdate(query);
-			}
-			catch (SQLException e) 
-	         {
-	             e.printStackTrace();
-	         }
-		}*/
+		
         try {
         	Statement statement = connection.createStatement();
         	String id = (String) request.getSession().getAttribute("login");
