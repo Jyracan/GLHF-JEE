@@ -82,7 +82,7 @@
     <servlet-class>admin.CreationGroupeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GestionGroupe</servlet-name>
+    <servlet-name>CreationGroupe</servlet-name>
     <url-pattern>/admin/CreationGroupe</url-pattern>
   </servlet-mapping>
   
