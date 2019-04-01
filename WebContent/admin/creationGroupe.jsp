@@ -5,15 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Creation d'un groupe</title>
-	<form action="CreationGroupe" method="get">
+	<form action="CreationGroupe" method="post">
 			<div>
 				<input type="text" name="groupName" placeholder="Nom du nouveau groupe !">
 			</div>
 			<div>
-				<input type="password" name="password" placeholder="Ton mot de passe !">
-			</div>
-			<div>
-				<input type="submit" value="Connexion">
+				<input type="submit" value="Créer">
 			</div>
 		</form>
 </head>
