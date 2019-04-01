@@ -10,7 +10,8 @@
 </head>
 <body>
 	<div>Bienvenue dans l'interface de modification des droits des utilisateurs</div>
-	<div >Liste des utilisateurs :</div>	
+	<div >Liste des utilisateurs :</div>
+	<form action="" method="post">
 		<table id="tableau" border="1">
 			<thead>
 				<tr>
@@ -26,7 +27,7 @@
 				<tr>
 					<td><%= usr.getLogin() %></td>
 					<td>
-						<select>
+						<select name=<%= usr.getLogin() %>>
 							<% 
 							ArrayList<String> rights = new ArrayList<>();
 							rights.add("std"); rights.add("editor"); rights.add("admin");
@@ -45,7 +46,6 @@
 				<% } %>
 			</tbody>
 		</table>
-	<form action="" method="post">
 		<input type = "submit" name ="save" value = "Enregistrer">
 	</form>
 </body>

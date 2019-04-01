@@ -65,5 +65,8 @@
 	<form action="StudentModification" method= "get">
 		<input type = "submit" name ="modifier" value = "Modifier l'étudiant">
 	</form>
+	<form action="StudentVisualizationServlet">
+		<input type="submit" name="retour" value = "Annuler et retourner à la visualisation">
+	</form>
 </body>
 </html>

@@ -2,6 +2,7 @@ package admin;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -41,6 +42,7 @@ public class UsersManagementServlet extends HttpServlet {
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/UsersList.jsp");
 		request.setAttribute("usersList", users);
+		request.getSession().setAttribute("usersList", users);
 		try {
 			rd.forward(request, response);
 		} catch (IOException e) {
@@ -51,8 +53,27 @@ public class UsersManagementServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		if (SessionVerifier.getInstance().verify(request, response)) {
+			return;
+		}
+		
+		Connection connection = DBManagerAuth.getInstance().getConnection();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement("UPDATE Utilisateur SET droits = ? WHERE id = ?");
+			
+			ArrayList<User> users = (ArrayList<User>) request.getSession().getAttribute("usersList");
+			request.getSession().setAttribute("usersList", null);
+			for(User usr : users) {
+				if(!usr.getRights().equals(request.getParameter(usr.getLogin()))) {
+					pstmt.setString(1, request.getParameter(usr.getLogin()));
+					pstmt.setString(2, usr.getLogin());
+					pstmt.executeUpdate();
+				}
+	    	}
+	    } catch (SQLException e) {
+	    	e.printStackTrace();
+	    }
+		response.sendRedirect("Menu");
 	}
 
 }
