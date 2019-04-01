@@ -10,6 +10,7 @@
     <servlet-name>Connexion</servlet-name>
     <url-pattern>/Connexion</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <display-name>Deconnexion</display-name>
     <servlet-name>Deconnexion</servlet-name>
@@ -64,6 +65,27 @@
     <servlet-name>standard_Menu</servlet-name>
     <url-pattern>/standard/Menu</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <display-name>GestionGroupe</display-name>
+    <servlet-name>GestionGroupe</servlet-name>
+    <servlet-class>admin.GestionGroupeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionGroupe</servlet-name>
+    <url-pattern>/admin/GestionGroupe</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>CreationGroupe</display-name>
+    <servlet-name>CreationGroupe</servlet-name>
+    <servlet-class>admin.CreationGroupeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionGroupe</servlet-name>
+    <url-pattern>/admin/CreationGroupe</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <display-name>Liste des étudiants</display-name>
     <servlet-name>standard_StudentVisualizationServlet</servlet-name>
