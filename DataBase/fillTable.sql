@@ -134,14 +134,14 @@ INSERT INTO Groupe(nomGroupe,redacteur) VALUES
 -- -----------------------------------------------------
 -- Association of Students to the groupe 0
 INSERT INTO Etudiant_has_Groupe(Etudiant_id, Groupe_idGroupe) VALUES 
-("w91qubnq3", 0),
-("xm5gugisk", 0),
-("ivjnkb1c5", 0),
-("6mh4kwhi4", 0);
+("w91qubnq3", 1),
+("xm5gugisk", 1),
+("ivjnkb1c5", 1),
+("6mh4kwhi4", 1);
 
 
 -- ----------------------------------------------------
 -- Insertion of values into Groupe_has_Groupe
 -- -----------------------------------------------------
 INSERT INTO Groupe_has_Groupe(idGroupeAscendant, idGroupeDescendant) VALUES 
-(0, 1);
+(1, 2);
