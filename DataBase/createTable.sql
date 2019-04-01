@@ -49,7 +49,7 @@ COMMENT = 'use';
 -- Table `Etudiant`.`Groupe`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Etudiant`.`Groupe` (
-  `idGroupe` INT NOT NULL,
+  `idGroupe` INT NOT NULL AUTO_INCREMENT,
   `nomGroupe` VARCHAR(45) NOT NULL,
   `redacteur` VARCHAR(10) NULL,
   PRIMARY KEY (`idGroupe`))

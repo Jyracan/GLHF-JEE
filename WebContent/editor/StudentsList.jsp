@@ -33,12 +33,7 @@
 	                
 				<%}%>
 			}
-			function reload(){
-				var tableau = document.getElementById("tableau");
-				// TODO : Voir comment vider la table plus proprement
-				clear();
-				loadTable();
-			}
+			
 			function clear(){
 				var tableau = document.getElementById("tableau");
 				longueur = tableau.rows.length;
@@ -53,7 +48,7 @@
 		<div>Bienvenue dans l'interface de visualisation des étudiants</div>
 		<form action="StudentDetails" method="post">
 				<div>
-					<label for="name" >Afficher le détail d'un étudiant : </label>
+					<label for="name" >Afficher le détail d'un étudiant :</label>
 					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
 					<input type = "submit" value = "Chercher">
 				</div>
@@ -65,9 +60,11 @@
 		<form action="StudentCreation">
 			<input type = "submit" name ="creer" value = "Créer l'étudiant">
 		</form>
-		<button id="reload" onClick="reload()">Rechargement du tableau niveau ObiWan !</button>
+		<form action = "StudentVisualizationServlet" method = "get">
+			<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
+		</form>
 		<div >Liste des étudiants :</div>	
-		<table id="tableau" border="1" ">
+		<table id="tableau" border="1" >
 			<thead>
 				<tr>
 					<th>id</th>
