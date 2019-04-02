@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DataAccessObjects.Etudiant;
 import DataAccessObjects.Groupe;
 import DataAccessObjects.GroupeListDAO;
-import DataAccessObjects.StudentListDAO;
 import sessionManagement.SessionVerifier;
 
 public class GroupeDetailsServlet extends HttpServlet {

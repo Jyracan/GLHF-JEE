@@ -46,7 +46,7 @@ public class GroupeListDAO {
   	  ResultSet rs = pstmt.executeQuery();
         while(rs.next())
         {
-      	   String nomGroupe = rs.getString("nomGoupe");
+      	   String nomGroupe = rs.getString("nomGroupe");
       	   String redacteur = rs.getString("redacteur");            
             Groupe groupe = new Groupe(idGroupe,nomGroupe,redacteur);
             groupes.add(groupe);

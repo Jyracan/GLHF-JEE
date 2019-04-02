@@ -23,7 +23,7 @@
 		<% 	String idGroupe = groupe.getIdGroupe();
 			String nomGroupe = groupe.getNomGroupe();
             String redacteur = groupe.getRedacteur();
-           
+           System.out.println("Still alive !");
        %>
        <tr onclick="this.style.cursor='default';" >
 			<td><%=idGroupe %></td>
