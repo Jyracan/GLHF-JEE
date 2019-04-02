@@ -8,13 +8,9 @@
 </head>
 <body>
 	<form action = "CreationGroupe" method = "get">
+		<input type="text" name="idGroupe" placeholder="id_Groupe">
 		<input type="submit" value="création d'un groupe">
 	</form>
-	<form action = "EditionGroupe" method = "get">
-		<input type="submit" value="édition d'un groupe">
-	</form>
-	<form action = "SuppressionGroupe" method = "get">
-		<input type="submit" value="suppression d'un groupe">
-	</form>
+	
 </body>
 </html>

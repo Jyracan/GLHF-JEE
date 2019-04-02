@@ -10,7 +10,6 @@
     <servlet-name>Connexion</servlet-name>
     <url-pattern>/Connexion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>Deconnexion</display-name>
     <servlet-name>Deconnexion</servlet-name>
@@ -28,6 +27,24 @@
   <servlet-mapping>
     <servlet-name>PermissionInsuffisante</servlet-name>
     <url-pattern>/PermissionInsuffisante</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Menu</display-name>
+    <servlet-name>standard_Menu</servlet-name>
+    <servlet-class>standard.MenuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>standard_Menu</servlet-name>
+    <url-pattern>/standard/Menu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>Menu</display-name>
+    <servlet-name>admin_menu</servlet-name>
+    <servlet-class>admin.MenuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admin_menu</servlet-name>
+    <url-pattern>/admin/Menu</url-pattern>
   </servlet-mapping>
   <servlet>
     <display-name>QuestionSecrete</display-name>
@@ -56,93 +73,17 @@
     <servlet-name>ChangementPassword</servlet-name>
     <url-pattern>/ChangementPassword</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <display-name>Menu</display-name>
-    <servlet-name>standard_Menu</servlet-name>
-    <servlet-class>standard.MenuServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>standard_Menu</servlet-name>
-    <url-pattern>/standard/Menu</url-pattern>
-  </servlet-mapping>
   
-  <servlet>
-    <display-name>GestionGroupe</display-name>
-    <servlet-name>GestionGroupe</servlet-name>
-    <servlet-class>admin.GestionGroupeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GestionGroupe</servlet-name>
-    <url-pattern>/admin/GestionGroupe</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <display-name>CreationGroupe</display-name>
-    <servlet-name>CreationGroupe</servlet-name>
-    <servlet-class>admin.CreationGroupeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreationGroupe</servlet-name>
-    <url-pattern>/admin/CreationGroupe</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <display-name>EditionGroupe</display-name>
-    <servlet-name>EditionGroupe</servlet-name>
-    <servlet-class>admin.EditionGroupeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EditionGroupe</servlet-name>
-    <url-pattern>/admin/EditionGroupe</url-pattern>
-  </servlet-mapping>
-  
-    <servlet>
-    <display-name>VisualisationGroupe</display-name>
-    <servlet-name>VisualisationGroupeServlet</servlet-name>
-    <servlet-class>admin.VisualisationGroupeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>VisualisationGroupeServlet</servlet-name>
-    <url-pattern>/admin/VisualisationGroupeServlet</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <display-name>Liste des étudiants</display-name>
-    <servlet-name>standard_StudentVisualizationServlet</servlet-name>
-    <servlet-class>standard.StudentVisualizationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>standard_StudentVisualizationServlet</servlet-name>
-    <url-pattern>/standard/StudentVisualizationServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <display-name>Details d'un étudiant</display-name>
-    <servlet-name>standard_StudentDetailsServlet</servlet-name>
-    <servlet-class>standard.StudentDetailsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>standard_StudentDetailsServlet</servlet-name>
-    <url-pattern>/standard/StudentDetails</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <display-name>Menu</display-name>
-    <servlet-name>admin_menu</servlet-name>
-    <servlet-class>admin.MenuServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>admin_menu</servlet-name>
-    <url-pattern>/admin/Menu</url-pattern>
-  </servlet-mapping>
   <servlet>
     <display-name>StudentVisualizationServlet</display-name>
-    <servlet-name>admin_StudentVisualizationServlet</servlet-name>
+    <servlet-name>StudentVisualizationServlet</servlet-name>
     <servlet-class>admin.StudentVisualizationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>admin_StudentVisualizationServlet</servlet-name>
+    <servlet-name>StudentVisualizationServlet</servlet-name>
     <url-pattern>/admin/StudentVisualizationServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
+   <servlet>
     <display-name>Details d'un étudiant</display-name>
     <servlet-name>admin_StudentDetailsServlet</servlet-name>
     <servlet-class>admin.StudentDetailsServlet</servlet-class>
@@ -161,8 +102,6 @@
     <url-pattern>/admin/StudentDeletion</url-pattern>
   </servlet-mapping>
   <servlet>
-  
-  
     <display-name>Création d'un étudiant</display-name>
     <servlet-name>admin_StudentCreationServlet</servlet-name>
     <servlet-class>admin.StudentCreationServlet</servlet-class>
@@ -179,24 +118,6 @@
   <servlet-mapping>
     <servlet-name>admin_StudentModificationServlet</servlet-name>
     <url-pattern>/admin/StudentModification</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <display-name>Modification des droits des utilisateurs</display-name>
-    <servlet-name>admin_UsersManagementServlet</servlet-name>
-    <servlet-class>admin.UsersManagementServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>admin_UsersManagementServlet</servlet-name>
-    <url-pattern>/admin/UsersManagement</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <display-name>Redirect</display-name>
-    <servlet-name>admin_RedirectionServlet</servlet-name>
-    <servlet-class>admin.RedirectionServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>admin_RedirectionServlet</servlet-name>
-    <url-pattern>/admin/Redirection</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
