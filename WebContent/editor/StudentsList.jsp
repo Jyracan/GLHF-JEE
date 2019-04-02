@@ -52,7 +52,7 @@
 					<input type = "submit" name="chercher" value = "Chercher l'étudiant">
 					<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
 				</div>
-		</form>				
+		</form>
 		<form action="StudentCreation">
 			<input type = "submit" name ="creer" value = "Ajouter un nouvel étudiant">
 		</form>

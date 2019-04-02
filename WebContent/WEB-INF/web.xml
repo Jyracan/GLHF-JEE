@@ -120,6 +120,18 @@
     <servlet-name>SuppressionGroupe</servlet-name>
     <url-pattern>/admin/SuppressionGroupe</url-pattern>
   </servlet-mapping>
+ 
+ 
+  <servlet>
+    <display-name>GroupeDetails</display-name>
+    <servlet-name>GroupeDetails</servlet-name>
+    <servlet-class>admin.GroupeDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GroupeDetails</servlet-name>
+    <url-pattern>/admin/GroupeDetails</url-pattern>
+  </servlet-mapping> 
+  
   
   <servlet>
     <display-name>Liste des étudiants</display-name>
