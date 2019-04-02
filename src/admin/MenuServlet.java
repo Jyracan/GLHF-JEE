@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import sessionManagement.SessionVerifier;
+import sessionManagement.User;
 
 public class MenuServlet extends HttpServlet {
 	
