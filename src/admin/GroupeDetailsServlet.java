@@ -34,7 +34,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		
 		if(ajtEtudiant != null) {
 			gld.ajtEtu(searchText, idGroupe);
-			rd = getServletContext().getRequestDispatcher("/admin/GroupeDetailsServlet");
+			rd = getServletContext().getRequestDispatcher("/admin/VisualisationGroupeServlet");
 			try {
 				rd.forward(request, response);
 			}
@@ -46,7 +46,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		}
 		else if(supprEtudiant != null) {
 			gld.supprEtu(searchText, idGroupe);
-			rd = getServletContext().getRequestDispatcher("/admin/GroupeDetailsServlet");
+			rd = getServletContext().getRequestDispatcher("/admin/VisualisationGroupeServlet");
 			try {
 				rd.forward(request, response);
 			}

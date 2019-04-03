@@ -15,6 +15,14 @@ import sessionManagement.SessionVerifier;
 
 public class VisualisationGroupeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess( request,  response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess( request,  response);
+	}
+	
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		if (SessionVerifier.getInstance().verify(request, response)) {
 			return;
 		}
@@ -25,7 +33,7 @@ public class VisualisationGroupeServlet extends HttpServlet {
 			
 		GroupeListDAO groupeListDAO = new GroupeListDAO();
 		List<Groupe> listGroupes = groupeListDAO.getGroupeList();
-
+		
 		try {
 			request.setAttribute("listGroupe", listGroupes);
 			rd.forward(request, response);
@@ -34,6 +42,5 @@ public class VisualisationGroupeServlet extends HttpServlet {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-	
 	}
 }
