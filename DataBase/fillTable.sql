@@ -5,7 +5,10 @@ USE Authentification
 -- Insertion of values into Utilisateur
 -- -----------------------------------------------------
 
-INSERT INTO Utilisateur(id,mdp,qSecrete,rqSecrete,droits) VALUES ('root','root','quel est ton login ?','root','admin');
+INSERT INTO Utilisateur(id,mdp,qSecrete,rqSecrete,droits) VALUES 
+('root','root','quel est ton login ?','root','admin'),
+('editor','editor','quel est ton login ?','editor','editor'),
+('user','user','quel est ton login ?','user','standard');
 
 
 -- Changing data base
