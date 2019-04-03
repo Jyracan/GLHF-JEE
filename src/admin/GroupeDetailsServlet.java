@@ -20,8 +20,44 @@ public class GroupeDetailsServlet extends HttpServlet {
 		doProcess(request, response);
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		RequestDispatcher rd = null;
+		String ajtEtudiant = request.getParameter("ajtEtudiant");
+		String supprEtudiant =  request.getParameter("supprEtudiant");
+		String searchText = request.getParameter("searchText");
+		String idGroupe = request.getParameter("idGroupe");
+		request.setAttribute("searchText", searchText);
+		
+		GroupeListDAO gld = new GroupeListDAO();
+
+		
+		if(ajtEtudiant != null) {
+			gld.ajtEtu(searchText, idGroupe);
+			rd = getServletContext().getRequestDispatcher("/admin/GroupeDetailsServlet");
+			try {
+				rd.forward(request, response);
+			}
+		 	catch (IOException e) {
+		 		e.printStackTrace();
+		 	}catch (ServletException e) {
+		 		e.printStackTrace();
+		 	}
+		}
+		else if(supprEtudiant != null) {
+			gld.supprEtu(searchText, idGroupe);
+			rd = getServletContext().getRequestDispatcher("/admin/GroupeDetailsServlet");
+			try {
+				rd.forward(request, response);
+			}
+		 	catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+	}
+			
+		}
+		
 	}
 
 	private void doProcess (HttpServletRequest request, HttpServletResponse response) {

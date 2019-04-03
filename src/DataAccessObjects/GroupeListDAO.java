@@ -100,5 +100,28 @@ public class GroupeListDAO {
 			  return null;
 		  else
 			return listStudent;
+	}
+	
+	public void supprEtu (String idEtudiant, String idGroupe) {
+		Connection connection = DBManager.getInstance().getConnection();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement("DELETE FROM Etudiant_has_Groupe WHERE Groupe_idGroupe=? AND Etudiant_id=?");	
+			pstmt.setString(1, idGroupe);
+			pstmt.setString(2, idEtudiant);
+			pstmt.executeUpdate();   
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
+	}
+	public void ajtEtu (String idEtudiant, String idGroupe) {
+		Connection connection = DBManager.getInstance().getConnection();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Etudiant_has_Groupe (Groupe_idGroupe,Etudiant_id)  VALUES (? , ?)");
+			pstmt.setString(1, idGroupe);
+			pstmt.setString(2, idEtudiant);
+			pstmt.executeUpdate();
+			}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

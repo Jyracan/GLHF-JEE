@@ -44,13 +44,13 @@
 <body onload='loadTable()')>
 	<h1>Bienvenue dans l'édition de groupe</h1>
 	
-	<form action="GroupeDetails" method="post">
+	<form action="GroupeDetails" method="get">
 				<div>
 					<label for="name" >Afficher le détail d'un groupe :</label>
 					<input type="text" name="searchText" placeholder="Id de Groupe">
 					<input type ="submit" name="chercher" value = "Chercher le Groupe">
 				</div>
-		</form>
+	</form>
 	
 	<form action = "VisualisationGroupeServlet" method = "get">
 		<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
