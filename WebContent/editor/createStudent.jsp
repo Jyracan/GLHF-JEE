@@ -15,6 +15,9 @@
 		</form>
 	</div>
 	<h3 class="h5 font-weight-normal ml-3">Bienvenue dans l'outil de création d'un étudiant</h3>
+	<% if((boolean)request.getAttribute("fail")) { %>
+		<div class="alert alert-danger text-center w-25 ml-5">Insertion impossible !</div>
+	<% } %>
 	<p class="text-danger ml-3"> Les champs avec (*) sont obligatoires </p>
 	
 <form action = "StudentCreation" method = "post" class="ml-3">

@@ -100,7 +100,7 @@ public class StudentListDAO {
 	       }
 	}
 	
-	public void addStudent(ArrayList<String> parameters) {
+	public SQLException addStudent(ArrayList<String> parameters) {
 		
 		Connection connection = DBManager.getInstance().getConnection();
 		
@@ -114,10 +114,12 @@ public class StudentListDAO {
 	    	  }
 	    	  pstmt.executeUpdate();
 	    	  System.out.println("Student added");
+	    	  return null;
 	      }
 		catch (SQLException e) 
 	       {
 	           e.printStackTrace();
+	           return e;
 	       }
 		
 	}
