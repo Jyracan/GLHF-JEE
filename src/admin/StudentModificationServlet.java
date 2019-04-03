@@ -23,10 +23,10 @@ public class StudentModificationServlet extends HttpServlet {
 			return;
 		}
 		
-		StudentListDAO studentListDAO = new StudentListDAO();
 		RequestDispatcher rd = null;
 		Etudiant etudiant = (Etudiant) request.getSession().getAttribute("etudiant");
-		rd = getServletContext().getRequestDispatcher("/admin/StudentModification.jsp");
+		request.setAttribute("fail", false);
+		rd = getServletContext().getRequestDispatcher("/editor/StudentModification.jsp");
 		try {
 			if(etudiant == null)
 			{
@@ -64,8 +64,13 @@ public class StudentModificationServlet extends HttpServlet {
 			updateProperties.add(request.getParameter(studentProperties[i-1]));
 		}
 		
-		studentListDAO.updateStudent(updateProperties);
-		JOptionPane.showMessageDialog(null,"Etudiant modifié");
+		if(studentListDAO.updateStudent(updateProperties) != null) {
+			request.setAttribute("fail", true);
+			request.setAttribute("StudentDetail", etudiant);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/editor/StudentModification.jsp");
+			rd.forward(request, response);
+			return;
+		}
 		
 		try {
 			response.sendRedirect("StudentVisualizationServlet");

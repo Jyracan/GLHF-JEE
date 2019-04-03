@@ -21,7 +21,6 @@ public class StudentCreationServlet extends HttpServlet {
 			return;
 		}
 		
-		StudentListDAO studentListDAO = new StudentListDAO();
 		RequestDispatcher rd = null;
 		request.setAttribute("fail", false);
 		rd = getServletContext().getRequestDispatcher("/editor/createStudent.jsp");
@@ -56,7 +55,6 @@ public class StudentCreationServlet extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		JOptionPane.showMessageDialog(null,"Etudiant créé");
 		
 		try {
 			response.sendRedirect("StudentVisualizationServlet");

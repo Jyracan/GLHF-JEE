@@ -35,23 +35,21 @@ public class StudentDetailsServlet extends HttpServlet {
 			
 		String searchText = request.getParameter("searchText");
 		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);
-		request.getSession().setAttribute("etudiant", etudiant);
-		rd = getServletContext().getRequestDispatcher("/editor/StudentDetail.jsp");
+
 		try {
-			if(etudiant == null)
-			{
-					rd.forward(request, response);
+			if(etudiant != null) {
+				rd = getServletContext().getRequestDispatcher("/editor/StudentDetail.jsp");
+				request.getSession().setAttribute("etudiant", etudiant);
+				request.setAttribute("StudentDetail", etudiant);
+				rd.forward(request, response);
+			} else {
+				response.sendRedirect("StudentVisualizationServlet");
 			}
-			else 
-			{
-					request.setAttribute("StudentDetail", etudiant);
-					rd.forward(request, response);
-			}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ServletException e) {
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
 		}
-		}	
+	}
+}	
 
