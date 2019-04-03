@@ -124,4 +124,25 @@ public class GroupeListDAO {
 			e.printStackTrace();
 		}
 	}
+	public void creerGroupe(String nomGroupe, String redacteur) {
+		Connection connection = DBManager.getInstance().getConnection();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Groupe (nomGroupe,redacteur)  VALUES (? , ?)");
+			pstmt.setString(1, nomGroupe);
+			pstmt.setString(2, redacteur);
+			pstmt.executeUpdate();
+			}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void supprGroupe (String nomGroupe) {
+		Connection connection = DBManager.getInstance().getConnection();
+		try {
+			PreparedStatement pstmt = connection.prepareStatement("DELETE FROM Groupe WHERE nomGroupe=?");	
+			pstmt.setString(1, nomGroupe);
+			pstmt.executeUpdate();   
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

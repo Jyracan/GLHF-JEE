@@ -31,11 +31,6 @@
 					<input type="submit" value="Voir la liste des groupes" class="btn btn-lg btn-light">
 				</form>
 			</div>
-			<div class="col-5 text-center bg-info rounded-pill p-2">
-				<form action="GestionGroupe" method="get">
-					<input type="submit" value="Gérer des groupe" class="btn btn-lg btn-light">
-				</form>
-			</div>
 		</div>
 	</div>
 </body>

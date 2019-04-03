@@ -55,6 +55,13 @@
 	<form action = "VisualisationGroupeServlet" method = "get">
 		<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
 	</form>
+	<form action="VisualisationGroupeServlet" method="post">
+		<div>
+			<input type="text" name="searchText" placeholder="Nom du groupe">
+			<input type ="submit" name="creeGroupe" value = "Créer un groupe">
+			<input type ="submit" name="supprGroupe" value = "Supprimer un groupe">
+		</div>
+	</form>
 		
 	<div >Liste des groupes :</div>	
 	<table id="tableau" border="1" >
