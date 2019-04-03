@@ -3,50 +3,53 @@
     pageEncoding="UTF-8"%>    
     
 <%@page import="java.util.List,DataAccessObjects.Etudiant"%>
-<%
- Groupe groupe = (Groupe)request.getAttribute("GroupeDetail");
-%>
+<%Groupe groupe = (Groupe)request.getAttribute("GroupeDetail");%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script>
-			function loadTable(){
-				<%
-				List<Etudiant> listStudent = (List<Etudiant>)request.getAttribute("listStudent");
-				for (Etudiant etudiant:listStudent) {
-					
-						String id = etudiant.getId();
-						String sexe = etudiant.getSexe();
-		                String nom = etudiant.getNom();
-		                String prenom = etudiant.getPrenom();
-	             %>
-					var tableau = document.getElementById("tableau");
-	                var elts = ['<%=id %> ', '<%=sexe %> ','<%=nom %>','<%=prenom %>']; // Je stocke les éléments dans un tableau pour remplir les colonnes plus simplement ...
-	                var ligne = tableau.insertRow(-1);//on a ajouté une ligne
-	                for (i=0;i<4;i++){
-	                	// On remplit chaque ligne
-	                	colonne =ligne.insertCell(i);
-	                	colonne.innerHTML += elts[i];
-	                	console.log("Insertion de " + elts[i]);
-	                }
-	                
-				<%}%>
-			}
-			
-			function clear(){
-				var tableau = document.getElementById("tableau");
-				longueur = tableau.rows.length;
-				for (i=1;i<longueur;i++){
-					tableau.deleteRow(-1);
-				}
-			}
+	function loadTable(){
+		<%
+		List<Etudiant> listStudent = (List<Etudiant>)request.getAttribute("listStudent");
+		String id = "";
+		String sexe = "";
+        String nom = "";
+        String prenom = "";
+		if (listStudent != null){
+			for (Etudiant etudiant:listStudent) {
+				id = etudiant.getId();
+				sexe = etudiant.getSexe();
+                nom = etudiant.getNom();
+                prenom = etudiant.getPrenom();
+        %>
+			var tableau = document.getElementById("tableau");
+               var elts = ['<%=id %> ', '<%=sexe %> ','<%=nom %>','<%=prenom %>']; // Je stocke les éléments dans un tableau pour remplir les colonnes plus simplement ...
+               var ligne = tableau.insertRow(-1);//on a ajouté une ligne
+               for (i=0;i<4;i++){
+               	// On remplit chaque ligne
+               	colonne =ligne.insertCell(i);
+               	colonne.innerHTML += elts[i];
+               	console.log("Insertion de " + elts[i]);
+               }
+               
+			<%}
+		}%>
+	}
+	
+	function clear(){
+		var tableau = document.getElementById("tableau");
+		longueur = tableau.rows.length;
+		for (i=1;i<longueur;i++){
+			tableau.deleteRow(-1);
+		}
+	}
 </script>
 
-<title>Détails du groupe <%= groupe.getNomGroupe() %></title>
+<title>Détails du groupe <%=groupe.getNomGroupe() %></title>
 </head>
 <body onload="loadTable()">
-	<p>Détails du groupe <%= groupe.getNomGroupe() %></p>
+	<h2>Détails du groupe <%=groupe.getNomGroupe() %></h2>
 	<table border="1">
 		<tr>
 			<th>idGroupe</th>
@@ -66,9 +69,9 @@
 	<form action="GroupeModification" method= "get">
 		<input type = "submit" name ="modifier" value = "Modifier le groupe">
 	</form>
-	<form action = "StudentVisualizationServlet" method = "get">
-			<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
-	</form>
+	
+	<h2>Étudiants composant le groupe <%=groupe.getNomGroupe() %></h2>
+	
 	<table id="tableau" border="1" >
 		<thead>
 			<tr>

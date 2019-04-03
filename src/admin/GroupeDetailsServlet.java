@@ -40,15 +40,15 @@ public class GroupeDetailsServlet extends HttpServlet {
 		request.getSession().setAttribute("listStudent", listStudent);
 		rd = getServletContext().getRequestDispatcher("/admin/GroupeDetail.jsp");
 		try {
-			if(groupe == null)
-			{
-					rd.forward(request, response);
-			}
-			else
-			{
-					request.setAttribute("GroupeDetail", groupe); //TODO : Faire l'équivalent pour étudiant !
-					request.setAttribute("listStudent", listStudent);
-					rd.forward(request, response);
+			if(groupe == null) {
+				rd.forward(request, response);
+			} else if(listStudent==null) {
+				request.setAttribute("GroupeDetail", groupe); 
+				rd.forward(request, response);
+			} else {
+				request.setAttribute("GroupeDetail", groupe); 
+				request.setAttribute("listStudent", listStudent);
+				rd.forward(request, response);
 			}
 			} catch (IOException e) {
 				e.printStackTrace();
