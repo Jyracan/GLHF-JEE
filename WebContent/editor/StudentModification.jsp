@@ -38,7 +38,7 @@
 	<div class="container-fluid">
 	<div class="row mb-1">
 		<div class="col-1">Sexe : </div>
-		<div class="col-5"><input type="text" name="sexe" value= <%= sexe %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="sexe" class="form-control mb-1" value=<%= sexe %>></div>
 	</div>
 	<div class="row mb-1">	
 		<div class="col-1">Nom (*) : </div>
@@ -50,43 +50,43 @@
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Date de naissance :</div>
-		<div class="col-5"><input type="text" name="dateNaissance" value=<%= dateNaissance %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="dateNaissance" class="form-control mb-1" value=<%= dateNaissance %> ></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Serie Bac : </div>
-		<div class="col-5"><input type="text" name="serieBac" value=<%= serieBac %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="serieBac" class="form-control mb-1" value=<%= serieBac %> ></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Année Bac :</div>
-		<div class="col-5"><input type="text" name="anneeBac" value=<%= anneeBac %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="anneeBac" class="form-control mb-1" value=<%= anneeBac %> ></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Mention Bac : </div>
-		<div class="col-5"><input type="text" name="mentionBac" value=<%= mentionBac %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="mentionBac" class="form-control mb-1" value=<%= mentionBac %> ></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Diplôme : </div>
-		<div class="col-5"><input type="text" name="diplome" value=<%= diplome %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="diplome" class="form-control mb-1" value=<%= diplome %> ></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Année du diplôme :</div>
-		<div class="col-5"><input type="text" name="anneeDiplome" value=<%= anneeDiplome %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="anneeDiplome" class="form-control mb-1" value=<%= anneeDiplome %>></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Ville du diplôme : </div>
-		<div class="col-5"><input type="text" name="villeDiplome" value=<%= villeDiplome %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="villeDiplome" class="form-control mb-1" value=<%= villeDiplome %>></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Année d'inscription : </div>
-		<div class="col-5"><input type="text" name="inscription" value=<%= inscription %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="inscription" class="form-control mb-1" value=<%= inscription %>></div>
 	</div>
 	<div class="row mb-1">
 		<div class="col-1">Courriel professionnel : </div>
-		<div class="col-5"><input type="text" name="courrielPro" value=<%= courrielPro %> class="form-control mb-1"></div>
+		<div class="col-5"><input type="text" name="courrielPro" class="form-control mb-1" value=<%= courrielPro %>></div>
 	</div>
 	<div class="row mb-2">
 		<div class="col-1">Courriel personnel : </div>
-		<div class="col-5"><input type="text" name="courrielPerso" value=<%= courrielPerso %> class="form-control mb-2"></div>
+		<div class="col-5"><input type="text" name="courrielPerso" class="form-control mb-2" value=<%= courrielPerso %>></div>
 	</div>	
 	<div>
 		<input type="submit" name="sauvegarderModifications" value="Sauvegarder les modifications" class="btn btn-success mb-3">

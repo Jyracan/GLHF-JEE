@@ -83,7 +83,7 @@ public class StudentListDAO {
    }
 	
 	public SQLException updateStudent(ArrayList<String> updateProperties) {
-		if(updateProperties.size() != 14 || updateProperties.get(1).contentEquals("") || updateProperties.get(2).contentEquals("")) {
+		if(updateProperties.size() != 14 || updateProperties.get(2).contentEquals("") || updateProperties.get(3).contentEquals("")) {
 			return new SQLException();
 		}
 		System.out.println("Beginning update");
@@ -108,9 +108,17 @@ public class StudentListDAO {
 	}
 	
 	public SQLException addStudent(ArrayList<String> parameters) {
+		if(parameters.size() != 14 || parameters.get(0).contentEquals("") || parameters.get(2).contentEquals("") || parameters.get(3).contentEquals("")) {
+			return new SQLException();
+		}
 		
+		for(int i = 0; i < 14; i++) {
+			if(parameters.get(i).contentEquals("")) {
+				parameters.set(i, null);
+			}
+		}
+
 		Connection connection = DBManager.getInstance().getConnection();
-		
 		
 		try{
 	    	  PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Etudiant (id,sexe, nom, prenom, dateNaissance, serieBac,"
