@@ -69,8 +69,18 @@
 	<form action="GroupeModification" method= "get">
 		<input type = "submit" name ="modifier" value = "Modifier le groupe">
 	</form>
-	
+
 	<h2>Étudiants composant le groupe <%=groupe.getNomGroupe() %></h2>
+	
+	
+	<form action="GroupeDetails" method="post">
+		<div>
+			<input type="text" name="searchText" placeholder="Id de l'Étudiant">
+			<input type ="submit" name="ajtEtudiant" value = "Ajouter l'Étudiant">
+			<input type ="submit" name="supprEtudiant" value = "Supprimer l'Étudiant">
+			<input type ="hidden" name="idGroupe" value = <%=idGroupe %>>
+		</div>
+	</form>
 	
 	<table id="tableau" border="1" >
 		<thead>

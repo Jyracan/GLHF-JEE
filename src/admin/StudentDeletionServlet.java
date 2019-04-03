@@ -34,7 +34,7 @@ public class StudentDeletionServlet extends HttpServlet {
 		String searchText = request.getParameter("searchText");
 		Etudiant etudiant = studentListDAO.getStudentDetail(searchText);	
 		studentListDAO.deleteSudent(etudiant);
-		JOptionPane.showMessageDialog(null,"Etudiant supprimé");
+		
 		
 		try {
 			response.sendRedirect("StudentVisualizationServlet");
