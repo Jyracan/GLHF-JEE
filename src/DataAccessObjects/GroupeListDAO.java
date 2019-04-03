@@ -60,5 +60,45 @@ public class GroupeListDAO {
   	  return null;
     else
   	  return groupes.get(0);
- }
+	}
+	
+
+	public List<Etudiant> getMember (String searchText){
+		
+		List<Etudiant> listStudent = new ArrayList<Etudiant>();
+		Connection connection = DBManager.getInstance().getConnection();
+		List<Groupe> groupes = new ArrayList<Groupe>();
+		String[] data = searchText.split(" ", 1);
+		String idGroupe = data[0];
+		  try {
+			  PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM Etudiant JOIN Etudiant_has_Groupe ON id = Etudiant_id WHERE Groupe_idGroupe = ?");	
+			  pstmt.setString(1, idGroupe);
+			  ResultSet rs = pstmt.executeQuery();
+			  while(rs.next()){
+				  String id = rs.getString("id");
+				  String sexe = rs.getString("sexe");
+				  String nom = rs.getString("nom");
+				  String prenom = rs.getString("prenom");
+				  String dateNaissance = rs.getString("dateNaissance");
+				  String serieBac = rs.getString("serieBac");
+				  int anneeBac = Integer.parseInt(rs.getString("anneeBac"));
+				  String mentionBac = rs.getString("mentionBac");
+				  String diplome = rs.getString("diplome");
+				  int anneeDiplome = Integer.parseInt(rs.getString("anneeDiplome"));
+				  String villeDiplome = rs.getString("villeDiplome");
+				  int inscription = Integer.parseInt(rs.getString("inscription"));
+				  String courrielPro = rs.getString("courrielPro");
+				  String courrielPerso = rs.getString("courrielPerso");
+			      Etudiant etudiant = new Etudiant(id,sexe,nom,prenom,dateNaissance,serieBac,anneeBac,mentionBac,diplome,anneeDiplome,villeDiplome,inscription,courrielPro,courrielPerso);
+			      listStudent.add(etudiant);
+			  }    
+		  }
+		   catch (SQLException e) {
+		       e.printStackTrace();
+		   }
+		  if(listStudent.isEmpty())
+			  return null;
+		  else
+			return listStudent;
+		}
 }
