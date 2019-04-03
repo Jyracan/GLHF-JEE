@@ -137,12 +137,36 @@ public class GroupeListDAO {
 	}
 	public void supprGroupe (String nomGroupe) {
 		Connection connection = DBManager.getInstance().getConnection();
+		String id_group="";
 		try {
-			PreparedStatement pstmt = connection.prepareStatement("DELETE FROM Groupe WHERE nomGroupe=?");	
-			pstmt.setString(1, nomGroupe);
-			pstmt.executeUpdate();   
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
+			Statement statementGroupe2 = connection.createStatement();
+	        Statement statementGroupe = connection.createStatement();
+
+		    ResultSet rs = statementGroupe.executeQuery("SELECT idGroupe FROM Groupe where nomGroupe =\""+nomGroupe +"\";");
+		    if(rs.next()) {
+		    	id_group=rs.getString("idGroupe");
+		    }
+		    
+			if(!nomGroupe.isEmpty()) {
+	        	Statement statement1 = connection.createStatement();
+	        	Statement statement2 = connection.createStatement();
+	        	Statement statement3 = connection.createStatement();
+	        	String query = "delete from Groupe where nomGroupe = \"" + nomGroupe +"\";";
+	        	String queryStudent = "delete from Etudiant_has_Groupe where Groupe_idGroupe =\""+id_group+"\";";
+	        	String queryGroup = "delete from Groupe_has_Groupe where idGroupeAscendant =\""+id_group+"\" or idGroupeDescendant =\""+id_group+"\";";
+	        	System.out.println(query);
+	        	System.out.println(queryStudent);
+	        	System.out.println(queryGroup);
+	        	statement1.executeUpdate(queryStudent);
+	        	statement2.executeUpdate(queryGroup);
+	        	statement3.executeUpdate(query);
+	        	
+			}
+       	
+       }
+       catch (SQLException e) 
+       {
+           e.printStackTrace();
+       }
 	}
 }
