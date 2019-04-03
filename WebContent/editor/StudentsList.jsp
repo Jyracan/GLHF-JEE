@@ -45,8 +45,8 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body onload="loadTable()">
-		<div class="container-fluid mt-3 ml-3">
-			<div class="row mb-4">
+		<div class="container-fluid">
+			<div class="row mb-4 mt-3 ml-3">
 				<form action="Menu"><input type="submit" name="retour" value = "Retourner au menu" class="btn btn-sm btn-outline-secondary"></form>
 			</div>
 			<div class="row mb-3 ml-4">				
@@ -54,7 +54,7 @@
 					<input type = "submit" name ="creer" value = "Ajouter un nouvel étudiant" class="btn btn-primary">
 				</form>
 			</div>
-			<div class="row align-items-center">
+			<div class="row ml-3">
 				<h1 class="h5 font-weight-normal mr-3">Entrez le nom d'un étudiant :</h1>
 				<form action="Redirection" method="post">
 					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom" class="form-control mb-1">
