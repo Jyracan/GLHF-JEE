@@ -23,7 +23,7 @@ public class StudentCreationServlet extends HttpServlet {
 		
 		StudentListDAO studentListDAO = new StudentListDAO();
 		RequestDispatcher rd = null;
-		
+		request.setAttribute("fail", false);
 		rd = getServletContext().getRequestDispatcher("/editor/createStudent.jsp");
 		try {
 				rd.forward(request, response);
@@ -50,7 +50,12 @@ public class StudentCreationServlet extends HttpServlet {
 			updateProperties.add(request.getParameter(studentProperties[i]));
 		}
 		
-		studentListDAO.addStudent(updateProperties);
+		if(studentListDAO.addStudent(updateProperties) != null) {
+			request.setAttribute("fail", true);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/editor/createStudent.jsp");
+			rd.forward(request, response);
+			return;
+		}
 		JOptionPane.showMessageDialog(null,"Etudiant créé");
 		
 		try {
