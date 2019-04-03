@@ -16,7 +16,9 @@
 	<input type="submit" name="retour" value = "Retourner à la liste des étudiants" class="btn btn-outline-secondary btn-sm mt-3 ml-3 mb-4">
 </form>
 <h3 class="h5 font-weight-normal ml-3 mb-4">Bienvenue dans l'outil de modification de l'étudiant <%=etudiant.getNom() %> <%= etudiant.getPrenom() %> (ID <%= etudiant.getId() %>) </h3>
-
+<% if((boolean)request.getAttribute("fail")) { %>
+	<div class="alert alert-danger text-center w-25 ml-5">Modification impossible !</div>
+<% } %>
 <% 			
 			String sexe = etudiant.getSexe();
             String nom = etudiant.getNom();

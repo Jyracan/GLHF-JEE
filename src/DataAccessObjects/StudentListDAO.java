@@ -41,6 +41,9 @@ public class StudentListDAO {
 		  Connection connection = DBManager.getInstance().getConnection();
 		  List<Etudiant> etudiants = new ArrayList<Etudiant>();
 		  String[] data = searchText.split(" ", 2);
+		  if(data.length != 2) {
+			  return null;
+		  }
 		  String nomEtudiant = data[0];
 		  String prenomEtudiant = data[1];
       try 
@@ -79,8 +82,10 @@ public class StudentListDAO {
     	  return etudiants.get(0);
    }
 	
-	public void updateStudent(ArrayList<String> updateProperties) {
-		
+	public SQLException updateStudent(ArrayList<String> updateProperties) {
+		if(updateProperties.size() != 14 || updateProperties.get(1).contentEquals("") || updateProperties.get(2).contentEquals("")) {
+			return new SQLException();
+		}
 		System.out.println("Beginning update");
 		Connection connection = DBManager.getInstance().getConnection();
 		try{
@@ -93,10 +98,12 @@ public class StudentListDAO {
 	    	  pstmt.setString(14,updateProperties.get(0)); // to get id 
 	    	  pstmt.executeUpdate();
 	    	  System.out.println("Update done");
+	    	  return null;
 	      }
 		catch (SQLException e) 
 	       {
 	           e.printStackTrace();
+	           return e;
 	       }
 	}
 	
