@@ -12,8 +12,8 @@
 <body>
 	<div class="container-fluid">
 		<div class="row mt-3 ml-3 mb-5">
-			<h1 class="h5 font-weight-normal mr-3">Bienvenue dans l'interface de modification des droits des utilisateurs.</h1>
-			<form action="Menu"><input type="submit" name="retour" value = "Retourner au menu" class="btn btn-sm btn-outline-secondary"></form>
+			<form action="Menu"><input type="submit" name="retour" value = "Retourner au menu" class="btn btn-sm btn-outline-secondary  mr-3"></form>
+			<h1 class="h5 font-weight-normal">Bienvenue dans l'interface de modification des droits des utilisateurs.</h1>
 		</div>
 		<div class="row justify-content-center">
 		<div class="col-5">

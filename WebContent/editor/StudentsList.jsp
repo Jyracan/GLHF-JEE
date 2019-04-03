@@ -42,36 +42,48 @@
 			}
 		
 		</script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body onload="loadTable()">
-		<div>Bienvenue dans l'interface de visualisation des étudiants</div>
-		<form action="Redirection" method="post">
-				<div>
-					<label for="name" >Afficher le détail d'un étudiant :</label>
-					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom">
-					<input type = "submit" name="chercher" value = "Chercher l'étudiant">
-					<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant">
-				</div>
-		</form>
-		<form action="StudentCreation">
-			<input type = "submit" name ="creer" value = "Ajouter un nouvel étudiant">
-		</form>
-		<form action = "StudentVisualizationServlet" method = "get">
-			<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok">
-		</form>
-		<div >Liste des étudiants :</div>	
-		<table id="tableau" border="1" >
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>Sexe</th>
-					<th>nom</th>
-					<th>prenom</th>
-				</tr>
-			</thead>
-		</table>
-		<form action="Menu">
-			<input type="submit" name="retour" value = "Retourner au menu">
-		</form>
+		<div class="container-fluid mt-3 ml-3">
+			<div class="row mb-4">
+				<form action="Menu"><input type="submit" name="retour" value = "Retourner au menu" class="btn btn-sm btn-outline-secondary"></form>
+			</div>
+			<div class="row mb-3 ml-4">				
+				<form action="StudentCreation">
+					<input type = "submit" name ="creer" value = "Ajouter un nouvel étudiant" class="btn btn-primary">
+				</form>
+			</div>
+			<div class="row align-items-center">
+				<h1 class="h5 font-weight-normal mr-3">Entrez le nom d'un étudiant :</h1>
+				<form action="Redirection" method="post">
+					<input type="text" name="searchText" placeholder="nom [ESPACE] prenom" class="form-control mb-1">
+					<input type = "submit" name="chercher" value = "Chercher l'étudiant" class="btn btn-primary">
+					<input type = "submit" name ="supprimer" value = "Supprimer l'étudiant" class="btn btn-danger">
+				</form>
+			</div>
+			<div class="row justify-content-center mt-5">
+				<h1 class="h5 font-weight-normal">Liste des étudiants :</h1>
+			</div>
+			<div class="row justify-content-center mb-2">
+				<form action = "StudentVisualizationServlet" method = "get">
+					<input type = "submit" name ="refresh" value = "Rechargement Niveau Ewok" class="btn btn-secondary">
+				</form>
+			</div>
+			<div class="row justify-content-center">
+			<div class="col-6">
+				<table id="tableau" class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>id</th>
+							<th>Sexe</th>
+							<th>Nom</th>
+							<th>Prénom</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			</div>
+		</div>
 	</body>
 </html>
