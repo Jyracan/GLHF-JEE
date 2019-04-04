@@ -137,19 +137,16 @@ public class GroupeListDAO {
 			e.printStackTrace();
 		}
 	}
-	public void supprGroupe (String nomGroupe) {
+	public void supprGroupe (String nomGroupe, String redacteur) {
 		Connection connection = DBManager.getInstance().getConnection();
 		String id_group="";
 		try {
-			Statement statementGroupe2 = connection.createStatement();
-	        Statement statementGroupe = connection.createStatement();
+			Statement statementGroupe = connection.createStatement();
 
-		    ResultSet rs = statementGroupe.executeQuery("SELECT idGroupe FROM Groupe where nomGroupe =\""+nomGroupe +"\";");
+		    ResultSet rs = statementGroupe.executeQuery("SELECT idGroupe FROM Groupe WHERE nomGroupe =\""+nomGroupe +"\" AND redacteur = \""+redacteur+"\";");
 		    if(rs.next()) {
 		    	id_group=rs.getString("idGroupe");
-		    }
     
-			if(!nomGroupe.isEmpty()) {
 	        	Statement statement1 = connection.createStatement();
 	        	Statement statement2 = connection.createStatement();
 	        	Statement statement3 = connection.createStatement();
@@ -162,7 +159,6 @@ public class GroupeListDAO {
 	        	statement1.executeUpdate(queryStudent);
 	        	statement2.executeUpdate(queryGroup);
 	        	statement3.executeUpdate(query);
-	        	
 			}
        	
        }

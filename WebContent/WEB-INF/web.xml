@@ -123,6 +123,7 @@
 
 
 
+
   <servlet>
     <display-name>Menu</display-name>
     <servlet-name>admin_menu</servlet-name>
@@ -203,25 +204,34 @@
     <url-pattern>/admin/Redirection</url-pattern>
   </servlet-mapping>
   
+  
+  
+  
+  
   <servlet>
     <display-name>VisualisationGroupe</display-name>
     <servlet-name>VisualisationGroupeServlet</servlet-name>
-    <servlet-class>admin.VisualisationGroupeServlet</servlet-class>
+    <servlet-class>editor.VisualisationGroupeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>VisualisationGroupeServlet</servlet-name>
     <url-pattern>/admin/VisualisationGroupeServlet</url-pattern>
+    <url-pattern>/editor/VisualisationGroupeServlet</url-pattern>
   </servlet-mapping>
  
   <servlet>
     <display-name>GroupeDetails</display-name>
     <servlet-name>GroupeDetails</servlet-name>
-    <servlet-class>admin.GroupeDetailsServlet</servlet-class>
+    <servlet-class>editor.GroupeDetailsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GroupeDetails</servlet-name>
     <url-pattern>/admin/GroupeDetails</url-pattern>
+    <url-pattern>/editor/GroupeDetails</url-pattern>
   </servlet-mapping>
+
+
+
 
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
