@@ -60,7 +60,6 @@ public class GroupeDetailsServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = null;
 		String ajtEtudiant = request.getParameter("ajtEtudiant");
 		String supprEtudiant =  request.getParameter("supprEtudiant");
 		String searchText = request.getParameter("idEtudiant");
@@ -82,7 +81,8 @@ public class GroupeDetailsServlet extends HttpServlet {
 			gld.addGrpToGrp(idGroupe, searchGroupe);
 			doGet(request, response);
 		} else if(supprGroupe != null && searchGroupe != "") {
-			
+			gld.delGrpToGrp(idGroupe, searchGroupe);
+			doGet(request, response);
 		}
 		
 	}

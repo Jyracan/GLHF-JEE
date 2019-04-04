@@ -214,4 +214,26 @@ public class GroupeListDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void delGrpToGrp(String idFather, String idSon) {
+		Connection connection = DBManager.getInstance().getConnection();
+		PreparedStatement pstmt;
+		try {
+			//suppression des étudiants du groupe fils dans le groupe père
+			pstmt = connection.prepareStatement("SELECT id FROM Etudiant,Etudiant_has_Groupe WHERE id = Etudiant_id AND Groupe_idGroupe = ?");
+			pstmt.setString(1, idSon);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				supprEtu(rs.getString("id"), idFather);
+			}
+			
+			//suppression de groupe_has_groupe
+			pstmt = connection.prepareStatement("DELETE FROM Groupe_has_Groupe WHERE idGroupeAscendant = ? AND idGroupeDescendant = ?");
+			pstmt.setString(1, idFather);
+			pstmt.setString(2, idSon);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
