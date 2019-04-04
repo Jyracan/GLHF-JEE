@@ -42,6 +42,9 @@
 
 </head>
 <body onload='loadTable()')>
+	<div class="row mb-4 mt-3 ml-3">
+		<form action="Menu"><input type="submit" name="retour" value = "Retourner au menu" class="btn btn-sm btn-outline-secondary"></form>
+	</div>
 	<h1>Bienvenue dans l'édition de groupe</h1>
 	
 	<form action="GroupeDetails" method="get">

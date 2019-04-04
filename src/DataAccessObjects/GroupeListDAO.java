@@ -140,10 +140,15 @@ public class GroupeListDAO {
 	public void supprGroupe (String nomGroupe, String redacteur) {
 		Connection connection = DBManager.getInstance().getConnection();
 		String id_group="";
+		ResultSet rs;
 		try {
 			Statement statementGroupe = connection.createStatement();
-
-		    ResultSet rs = statementGroupe.executeQuery("SELECT idGroupe FROM Groupe WHERE nomGroupe =\""+nomGroupe +"\" AND redacteur = \""+redacteur+"\";");
+			if(redacteur.contentEquals("")) {
+				rs = statementGroupe.executeQuery("SELECT idGroupe FROM Groupe WHERE nomGroupe =\""+nomGroupe +"\";");
+			} else {
+				rs = statementGroupe.executeQuery("SELECT idGroupe FROM Groupe WHERE nomGroupe =\""+nomGroupe +"\" AND redacteur = \""+redacteur+"\";");
+			}
+		    
 		    if(rs.next()) {
 		    	id_group=rs.getString("idGroupe");
     
