@@ -138,12 +138,12 @@ public class StudentListDAO {
 	       }
 		
 	}
-	
+
 	public void deleteSudent(Etudiant etudiant) {
-		
+
 		Connection connection = DBManager.getInstance().getConnection();
 		String id = etudiant.getId();
-		
+
 		try{
 	    	  PreparedStatement pstmt = connection.prepareStatement("DELETE FROM Etudiant WHERE Etudiant.id = ?");   	 
 	    	  pstmt.setString(1,id);
@@ -154,8 +154,44 @@ public class StudentListDAO {
 	       {
 	           e.printStackTrace();
 	       }
-		
+
 	}
+
+	public List<Groupe> getGroupeList(String idEtdudiant) {
+			Connection connection = DBManager.getInstance().getConnection();
+			String id_group="";
+			List<Groupe> groupes = new ArrayList<Groupe>();
+			Groupe groupe;
+			try {
+				Statement statementGroupe2 = connection.createStatement();
+		        Statement statementGroupe = connection.createStatement();
+
+			    ResultSet rs = statementGroupe.executeQuery("SELECT * FROM Etudiant_has_Groupe where Etudiant_id =\""+idEtdudiant +"\";");
+			    while(rs.next()) {
+			    	id_group=rs.getString("idGroupe");
+			    	
+			    	if(!id_group.isEmpty()) {
+			        	Statement statement1 = connection.createStatement();
+			        	String query = "SELECT * from Groupe where idGroupe= \"" + id_group +"\";";
+			        	ResultSet rs1 =statement1.executeQuery(query);
+			        	while (rs1.next()) {
+			        		String idGroupe = rs.getString("idGroupe");
+			        		String nomGroupe = rs.getString("nomGroupe");
+			        		String redacteur = rs.getString("redacteur");
+			        		groupe = new Groupe (idGroupe,nomGroupe,redacteur);
+			        		groupes.add(groupe);
+			        	}	
+					}
+			    }	
+	       }
+	       catch (SQLException e) 
+	       {
+	           e.printStackTrace();
+	       }
+			return groupes;
+		}
+		  
+		 
 }
 
 
