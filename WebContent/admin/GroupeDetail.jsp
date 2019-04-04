@@ -75,10 +75,9 @@
 	
 	<form action="GroupeDetails" method="post">
 		<div>
-			<input type="text" name="searchText" placeholder="Id de l'Étudiant">
+			<input type="text" name="idEtudiant" placeholder="Id de l'Étudiant">
 			<input type ="submit" name="ajtEtudiant" value = "Ajouter l'Étudiant">
 			<input type ="submit" name="supprEtudiant" value = "Supprimer l'Étudiant">
-			<input type ="hidden" name="idGroupe" value = <%=idGroupe %>>
 		</div>
 	</form>
 	

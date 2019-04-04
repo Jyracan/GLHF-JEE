@@ -17,50 +17,6 @@ import sessionManagement.SessionVerifier;
 public class GroupeDetailsServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
-	
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher rd = null;
-		String ajtEtudiant = request.getParameter("ajtEtudiant");
-		String supprEtudiant =  request.getParameter("supprEtudiant");
-		String searchText = request.getParameter("searchText");
-		String idGroupe = request.getParameter("idGroupe");
-		request.setAttribute("searchText", searchText);
-		
-		GroupeListDAO gld = new GroupeListDAO();
-
-		
-		if(ajtEtudiant != null) {
-			gld.ajtEtu(searchText, idGroupe);
-			rd = getServletContext().getRequestDispatcher("/admin/VisualisationGroupeServlet");
-			try {
-				rd.forward(request, response);
-			}
-		 	catch (IOException e) {
-		 		e.printStackTrace();
-		 	}catch (ServletException e) {
-		 		e.printStackTrace();
-		 	}
-		}
-		else if(supprEtudiant != null) {
-			gld.supprEtu(searchText, idGroupe);
-			rd = getServletContext().getRequestDispatcher("/admin/VisualisationGroupeServlet");
-			try {
-				rd.forward(request, response);
-			}
-		 	catch (IOException e) {
-			e.printStackTrace();
-		} catch (ServletException e) {
-			e.printStackTrace();
-	}
-			
-		}
-		
-	}
-
-	private void doProcess (HttpServletRequest request, HttpServletResponse response) {
 		if (SessionVerifier.getInstance().verify(request, response)) {
 			return;
 		}
@@ -68,17 +24,26 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		GroupeListDAO goupeListDAO = new GroupeListDAO();
 		RequestDispatcher rd = null;
 		
+		Groupe groupe;
+		List<Etudiant> listStudent;
 
 		String searchText = request.getParameter("searchText");
-		Groupe groupe = goupeListDAO.getGroupeDetail(searchText);
-		List<Etudiant> listStudent = goupeListDAO.getMember(searchText);
-		request.getSession().setAttribute("groupe", groupe);
-		request.getSession().setAttribute("listStudent", listStudent);
+		if (searchText != null) {
+			groupe = goupeListDAO.getGroupeDetail(searchText);
+			listStudent = goupeListDAO.getMember(searchText);
+			request.getSession().setAttribute("groupe", groupe);
+			request.getSession().setAttribute("listStudent", listStudent);
+		} else {
+			groupe = (Groupe) request.getSession().getAttribute("groupe");
+			listStudent = goupeListDAO.getMember(groupe.getIdGroupe());
+		}
 		rd = getServletContext().getRequestDispatcher("/admin/GroupeDetail.jsp");
 		try {
 			if(groupe == null) {
+				System.out.println("groupe null");
 				rd.forward(request, response);
 			} else if(listStudent==null) {
+				System.out.println("studentlist null");
 				request.setAttribute("GroupeDetail", groupe); 
 				rd.forward(request, response);
 			} else {
@@ -86,11 +51,33 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 				request.setAttribute("listStudent", listStudent);
 				rd.forward(request, response);
 			}
-			} catch (IOException e) {
+		} catch (IOException e) {
 				e.printStackTrace();
-			} catch (ServletException e) {
+		} catch (ServletException e) {
 				e.printStackTrace();
-			}
 		}
-		}	
+	}
 
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		RequestDispatcher rd = null;
+		String ajtEtudiant = request.getParameter("ajtEtudiant");
+		String supprEtudiant =  request.getParameter("supprEtudiant");
+		String searchText = request.getParameter("idEtudiant");
+		String idGroupe = ((Groupe) request.getSession().getAttribute("groupe")).getIdGroupe();
+		
+		GroupeListDAO gld = new GroupeListDAO();
+
+		
+		if(ajtEtudiant != null) {
+			gld.ajtEtu(searchText, idGroupe);
+			doGet(request, response);
+		}
+		else if(supprEtudiant != null) {
+			gld.supprEtu(searchText, idGroupe);
+			doGet(request, response);
+		}
+		
+	}
+}

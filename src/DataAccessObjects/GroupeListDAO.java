@@ -120,7 +120,7 @@ public class GroupeListDAO {
 			pstmt.setString(1, idGroupe);
 			pstmt.setString(2, idEtudiant);
 			pstmt.executeUpdate();
-			}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
