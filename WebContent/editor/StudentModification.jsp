@@ -19,6 +19,8 @@
 <% if((boolean)request.getAttribute("fail")) { %>
 	<div class="alert alert-danger text-center w-25 ml-5">Modification impossible !</div>
 <% } %>
+	<p class="text-danger ml-3"> Les champs avec (*) sont obligatoires </p>
+
 <% 			
 			String sexe = etudiant.getSexe();
             String nom = etudiant.getNom();

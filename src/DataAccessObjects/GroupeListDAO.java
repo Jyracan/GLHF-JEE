@@ -148,7 +148,7 @@ public class GroupeListDAO {
 		    if(rs.next()) {
 		    	id_group=rs.getString("idGroupe");
 		    }
-		    
+    
 			if(!nomGroupe.isEmpty()) {
 	        	Statement statement1 = connection.createStatement();
 	        	Statement statement2 = connection.createStatement();
