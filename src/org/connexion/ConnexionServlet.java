@@ -37,7 +37,7 @@ public class ConnexionServlet extends HttpServlet {
 		System.out.println("###############################################################################");
 		Connection connection = DBManagerAuth.getInstance().getConnection();
 		boolean userFound = false; 
-		try 
+		try
         {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT id, mdp, droits FROM Utilisateur");

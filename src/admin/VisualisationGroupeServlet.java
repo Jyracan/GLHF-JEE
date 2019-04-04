@@ -21,7 +21,6 @@ public class VisualisationGroupeServlet extends HttpServlet {
 	}
 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = null;
 		String creeGroupe = request.getParameter("creeGroupe");
 		String supprGroupe =  request.getParameter("supprGroupe");
 		String searchText = request.getParameter("searchText");
