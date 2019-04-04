@@ -13,6 +13,7 @@ import DataAccessObjects.Groupe;
 import DataAccessObjects.Etudiant;
 import DataAccessObjects.GroupeListDAO;
 import sessionManagement.SessionVerifier;
+import sessionManagement.User;
 
 public class GroupeDetailsServlet extends HttpServlet {
 	
@@ -69,19 +70,24 @@ public class GroupeDetailsServlet extends HttpServlet {
 		String searchGroupe = request.getParameter("idGroupe");
 		
 		GroupeListDAO gld = new GroupeListDAO();
-
+		
+		User user = (User) request.getSession().getAttribute("user");
+		String editor = user.getLogin();
+		if(user.getRights().contentEquals("admin")) {
+			editor = "";
+		}
 		
 		if(ajtEtudiant != null && searchText != "") {
-			gld.ajtEtu(searchText, idGroupe);
+			gld.ajtEtu(searchText, idGroupe, editor);
 			doGet(request, response);
 		} else if(supprEtudiant != null && searchText != "") {
-			gld.supprEtu(searchText, idGroupe);
+			gld.supprEtu(searchText, idGroupe, editor);
 			doGet(request, response);
 		} else if(ajtGroupe != null && searchGroupe != "") {
-			gld.addGrpToGrp(idGroupe, searchGroupe);
+			gld.addGrpToGrp(idGroupe, searchGroupe, editor);
 			doGet(request, response);
 		} else if(supprGroupe != null && searchGroupe != "") {
-			gld.delGrpToGrp(idGroupe, searchGroupe);
+			gld.delGrpToGrp(idGroupe, searchGroupe, editor);
 			doGet(request, response);
 		}
 		

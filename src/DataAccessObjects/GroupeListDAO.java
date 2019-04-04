@@ -104,24 +104,28 @@ public class GroupeListDAO {
 			return listStudent;
 	}
 	
-	public void supprEtu (String idEtudiant, String idGroupe) {
+	public void supprEtu (String idEtudiant, String idGroupe, String redacteur) {
 		Connection connection = DBManager.getInstance().getConnection();
 		try {
-			PreparedStatement pstmt = connection.prepareStatement("DELETE FROM Etudiant_has_Groupe WHERE Groupe_idGroupe=? AND Etudiant_id=?");	
-			pstmt.setString(1, idGroupe);
-			pstmt.setString(2, idEtudiant);
-			pstmt.executeUpdate();   
+			if(verifyEditor(idGroupe, redacteur)) {
+				PreparedStatement pstmt = connection.prepareStatement("DELETE FROM Etudiant_has_Groupe WHERE Groupe_idGroupe=? AND Etudiant_id=?");	
+				pstmt.setString(1, idGroupe);
+				pstmt.setString(2, idEtudiant);
+				pstmt.executeUpdate();
+			}
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	public void ajtEtu (String idEtudiant, String idGroupe) {
+	public void ajtEtu (String idEtudiant, String idGroupe, String redacteur) {
 		Connection connection = DBManager.getInstance().getConnection();
 		try {
-			PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Etudiant_has_Groupe (Groupe_idGroupe,Etudiant_id)  VALUES (? , ?)");
-			pstmt.setString(1, idGroupe);
-			pstmt.setString(2, idEtudiant);
-			pstmt.executeUpdate();
+			if(verifyEditor(idGroupe, redacteur)) {
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO Etudiant_has_Groupe (Groupe_idGroupe,Etudiant_id)  VALUES (? , ?)");
+				pstmt.setString(1, idGroupe);
+				pstmt.setString(2, idEtudiant);
+				pstmt.executeUpdate();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -193,48 +197,69 @@ public class GroupeListDAO {
 	    return groupes;
 	}
 	
-	public void addGrpToGrp(String idFather, String idSon) {
-		Connection connection = DBManager.getInstance().getConnection();
-		PreparedStatement pstmt;
-		try {
-			//insertion dans group_has_groupe
-			pstmt = connection.prepareStatement("INSERT INTO Groupe_has_Groupe (idGroupeAscendant,idGroupeDescendant)  VALUES (? , ?)");
-			pstmt.setString(1, idFather);
-			pstmt.setString(2, idSon);
-			pstmt.executeUpdate();
+	public void addGrpToGrp(String idFather, String idSon, String redacteur) {
+		if(verifyEditor(idFather, redacteur)) {
+			Connection connection = DBManager.getInstance().getConnection();
+			PreparedStatement pstmt;
+			try {
+				//insertion dans group_has_groupe
+				pstmt = connection.prepareStatement("INSERT INTO Groupe_has_Groupe (idGroupeAscendant,idGroupeDescendant)  VALUES (? , ?)");
+				pstmt.setString(1, idFather);
+				pstmt.setString(2, idSon);
+				pstmt.executeUpdate();
 			
-			//insertion des étudiants dans le groupe
-			pstmt = connection.prepareStatement("SELECT id FROM Etudiant,Etudiant_has_Groupe WHERE id = Etudiant_id AND Groupe_idGroupe = ?");
-			pstmt.setString(1, idSon);
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				ajtEtu(rs.getString("id"), idFather);
+				//insertion des étudiants dans le groupe
+				pstmt = connection.prepareStatement("SELECT id FROM Etudiant,Etudiant_has_Groupe WHERE id = Etudiant_id AND Groupe_idGroupe = ?");
+				pstmt.setString(1, idSon);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					ajtEtu(rs.getString("id"), idFather, redacteur);
+				}			
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 	}
 	
-	public void delGrpToGrp(String idFather, String idSon) {
-		Connection connection = DBManager.getInstance().getConnection();
-		PreparedStatement pstmt;
-		try {
-			//suppression des étudiants du groupe fils dans le groupe père
-			pstmt = connection.prepareStatement("SELECT id FROM Etudiant,Etudiant_has_Groupe WHERE id = Etudiant_id AND Groupe_idGroupe = ?");
-			pstmt.setString(1, idSon);
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				supprEtu(rs.getString("id"), idFather);
-			}
+	public void delGrpToGrp(String idFather, String idSon, String redacteur) {
+		if(verifyEditor(idFather, redacteur)) {
+			Connection connection = DBManager.getInstance().getConnection();
+			PreparedStatement pstmt;
+			try {
+				//suppression des étudiants du groupe fils dans le groupe père
+				pstmt = connection.prepareStatement("SELECT id FROM Etudiant,Etudiant_has_Groupe WHERE id = Etudiant_id AND Groupe_idGroupe = ?");
+				pstmt.setString(1, idSon);
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					supprEtu(rs.getString("id"), idFather, redacteur);
+				}
 			
-			//suppression de groupe_has_groupe
-			pstmt = connection.prepareStatement("DELETE FROM Groupe_has_Groupe WHERE idGroupeAscendant = ? AND idGroupeDescendant = ?");
-			pstmt.setString(1, idFather);
-			pstmt.setString(2, idSon);
-			pstmt.executeUpdate();
+				//suppression de groupe_has_groupe
+				pstmt = connection.prepareStatement("DELETE FROM Groupe_has_Groupe WHERE idGroupeAscendant = ? AND idGroupeDescendant = ?");
+				pstmt.setString(1, idFather);
+				pstmt.setString(2, idSon);
+				pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private boolean verifyEditor(String idGroupe, String editor) {
+		Connection connection = DBManager.getInstance().getConnection();
+		ResultSet rs;
+		Statement statementGroupe;
+		try {
+			statementGroupe = connection.createStatement();
+			if(editor.contentEquals("")) {
+				rs = statementGroupe.executeQuery("SELECT * FROM Groupe WHERE idGroupe =\""+idGroupe+"\";");
+			} else {
+				rs = statementGroupe.executeQuery("SELECT * FROM Groupe WHERE idGroupe =\""+idGroupe+"\" AND redacteur = \""+editor+"\";");
+			}
+			return rs.next();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 }
