@@ -40,14 +40,14 @@ public class ConnexionServlet extends HttpServlet {
 		try
         {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT id, mdp, droits FROM Utilisateur");
+            ResultSet rs = statement.executeQuery("SELECT id, mdp, droits, qSecrete, rqSecrete FROM Utilisateur");
             while(!userFound && rs.next()) {
 	            if(rs.getString("id").contentEquals(request.getParameter("login")) && rs.getString("mdp").contentEquals(request.getParameter("password"))) {
 	      	  		userFound = true;
 	      	  	}
             }
             if(userFound) {
-        		User user = new User(rs.getString("id"), rs.getString("mdp"), rs.getString("droits"));
+        		User user = new User(rs.getString("id"), rs.getString("mdp"), rs.getString("droits"), rs.getString("qSecrete"), rs.getString("rqSecrete"));
             	request.getSession().setAttribute("user", user);
             	if(user.getRights().equals("admin")) {
                 	response.sendRedirect("admin/Menu");

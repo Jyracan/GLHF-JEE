@@ -11,6 +11,9 @@
 	<form action="/ProjetJEE/Deconnexion">
 		<input type="submit" value="Déconnexion" class="btn btn-sm btn-outline-secondary mt-3 ml-3">
 	</form>
+	<form action="Profile">
+		<input type="submit" value="Profile" class="btn btn-sm btn-outline-primary mt-3 ml-3">
+	</form>
 	<h1 class="h4 font-weight-normal mt-3 mb-5 text-center">Bonjour, que puis-je faire pour vous ?</h1>
 	<div class="container">
 		<div class="row justify-content-center mb-5">

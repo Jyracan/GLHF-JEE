@@ -4,11 +4,15 @@ public final class User {
 	private String login;
 	private String password;
 	private String rights;	//admin, editor, standard
+	private String question;
+	private String answer;
 	
-	public User (String login, String password, String rights) {
+	public User (String login, String password, String rights, String question, String answer) {
 		this.setLogin(login);
 		this.setPassword(password);
 		this.rights = rights;
+		this.setQuestion(question);
+		this.setAnswer(answer);
 	}
 
 
@@ -39,5 +43,25 @@ public final class User {
 
 	public void setRights(String rights) {
 		this.rights = rights;
+	}
+
+
+	public String getAnswer() {
+		return answer;
+	}
+
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+
+	public String getQuestion() {
+		return question;
+	}
+
+
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 }

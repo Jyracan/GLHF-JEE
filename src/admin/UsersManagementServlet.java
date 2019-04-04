@@ -34,7 +34,7 @@ public class UsersManagementServlet extends HttpServlet {
             
             while(rs.next())
             {
-          	  	users.add(new User(rs.getString("id"), null, rs.getString("droits")));
+          	  	users.add(new User(rs.getString("id"), null, rs.getString("droits"), null, null));
             }
          } catch (SQLException e) {
              e.printStackTrace();

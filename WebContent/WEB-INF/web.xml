@@ -118,6 +118,18 @@
     <servlet-name>standard_GroupeDetails</servlet-name>
     <url-pattern>/standard/GroupeDetails</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <display-name>Profile</display-name>
+    <servlet-name>Profile</servlet-name>
+    <servlet-class>standard.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Profile</servlet-name>
+    <url-pattern>/standard/Profile</url-pattern>
+    <url-pattern>/editor/Profile</url-pattern>
+    <url-pattern>/admin/Profile</url-pattern>
+  </servlet-mapping>
 
 
 
