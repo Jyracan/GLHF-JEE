@@ -21,7 +21,8 @@ public class GroupeDetailsServlet extends HttpServlet {
 			return;
 		}
 
-		GroupeListDAO goupeListDAO = new GroupeListDAO();
+		GroupeListDAO groupeListDAO = new GroupeListDAO();
+		request.setAttribute("listGroupe", groupeListDAO.getGroupeList());
 		RequestDispatcher rd = null;
 		
 		Groupe groupe;
@@ -29,20 +30,18 @@ public class GroupeDetailsServlet extends HttpServlet {
 
 		String searchText = request.getParameter("searchText");
 		if (searchText != null) {
-			groupe = goupeListDAO.getGroupeDetail(searchText);
-			listStudent = goupeListDAO.getMember(searchText);
+			groupe = groupeListDAO.getGroupeDetail(searchText);
+			listStudent = groupeListDAO.getMember(searchText);
 			request.getSession().setAttribute("groupe", groupe);
 			request.getSession().setAttribute("listStudent", listStudent);
 		} else {
 			groupe = (Groupe) request.getSession().getAttribute("groupe");
-			listStudent = goupeListDAO.getMember(groupe.getIdGroupe());
+			listStudent = groupeListDAO.getMember(groupe.getIdGroupe());
 		}
+		request.setAttribute("fils", groupeListDAO.getGroupeSons(groupe.getIdGroupe()));
 		rd = getServletContext().getRequestDispatcher("/admin/GroupeDetail.jsp");
 		try {
-			if(groupe == null) {
-				System.out.println("groupe null");
-				rd.forward(request, response);
-			} else if(listStudent==null) {
+			if(listStudent==null) {
 				System.out.println("studentlist null");
 				request.setAttribute("GroupeDetail", groupe); 
 				rd.forward(request, response);
@@ -66,17 +65,23 @@ public class GroupeDetailsServlet extends HttpServlet {
 		String supprEtudiant =  request.getParameter("supprEtudiant");
 		String searchText = request.getParameter("idEtudiant");
 		String idGroupe = ((Groupe) request.getSession().getAttribute("groupe")).getIdGroupe();
+		String ajtGroupe = request.getParameter("ajtGroupe");
+		String supprGroupe =  request.getParameter("supprGroupe");
+		String searchGroupe = request.getParameter("idGroupe");
 		
 		GroupeListDAO gld = new GroupeListDAO();
 
 		
-		if(ajtEtudiant != null) {
+		if(ajtEtudiant != null && searchText != "") {
 			gld.ajtEtu(searchText, idGroupe);
 			doGet(request, response);
-		}
-		else if(supprEtudiant != null) {
+		} else if(supprEtudiant != null && searchText != "") {
 			gld.supprEtu(searchText, idGroupe);
 			doGet(request, response);
+		} else if(ajtGroupe != null && searchGroupe != "") {
+			
+		} else if(supprGroupe != null && searchGroupe != "") {
+			
 		}
 		
 	}

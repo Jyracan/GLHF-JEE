@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
     
-<%@page import="java.util.List,DataAccessObjects.Etudiant"%>
+<%@page import="java.util.ArrayList,DataAccessObjects.Etudiant,DataAccessObjects.Groupe"%>
 <%Groupe groupe = (Groupe)request.getAttribute("GroupeDetail");%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 <script>
 	function loadTable(){
 		<%
-		List<Etudiant> listStudent = (List<Etudiant>)request.getAttribute("listStudent");
+		ArrayList<Etudiant> listStudent = (ArrayList<Etudiant>)request.getAttribute("listStudent");
 		String id = "";
 		String sexe = "";
         String nom = "";
@@ -66,9 +66,60 @@
 			<td><%=redacteur %></td>
 		</tr>
 	</table>
-	<form action="GroupeModification" method= "get">
-		<input type = "submit" name ="modifier" value = "Modifier le groupe">
-	</form>
+	
+	<div>
+		<form action="GroupeDetails" method="post">
+		<div>
+			<input type="text" name="idGroupe" placeholder="Id du groupe">
+			<input type ="submit" name="ajtGroupe" value = "Ajouter le groupe">
+			<input type ="submit" name="supprGroupe" value = "Supprimer le groupe">
+		</div>
+		</form>
+		<h3>Liste des groupes</h3>
+		<table>
+			<thead class="thead-dark">
+				<tr>
+					<th>id</th>
+					<th>Nom</th>
+					<th>Rédacteur</th>
+				</tr>
+			</thead>
+			<tbody>
+			<%
+				ArrayList<Groupe> groupes = (ArrayList<Groupe>) request.getAttribute("listGroupe");
+				for(Groupe grp : groupes) {
+			%>
+				<tr>
+					<td><%= grp.getIdGroupe() %></td>
+					<td><%= grp.getNomGroupe() %></td>
+					<td><%= grp.getRedacteur()%></td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
+		<h3>Liste des groupes fils</h3>
+		<table>
+			<thead class="thead-dark">
+				<tr>
+					<th>id</th>
+					<th>Nom</th>
+					<th>Rédacteur</th>
+				</tr>
+			</thead>
+			<tbody>
+			<%
+				ArrayList<Groupe> fils = (ArrayList<Groupe>) request.getAttribute("fils");
+				for(Groupe grp : fils) {
+			%>
+				<tr>
+					<td><%= grp.getIdGroupe() %></td>
+					<td><%= grp.getNomGroupe() %></td>
+					<td><%= grp.getRedacteur()%></td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
+	</div>
 
 	<h2>Étudiants composant le groupe <%=groupe.getNomGroupe() %></h2>
 	
@@ -93,7 +144,7 @@
 	</table>
 		
 	<form action="VisualisationGroupeServlet">
-		<input type="submit" name="retour" value = "Annuler et retourner à la visualisation">
+		<input type="submit" name="retour" value = "Retourner à la liste des groupes">
 	</form>
 </body>
 </html>

@@ -32,7 +32,9 @@ public class GroupeListDAO {
 	             e.printStackTrace();
 	         }
 	         return groupes;
-	     }
+	}
+	
+	
 	public Groupe getGroupeDetail(String searchText) {
 		
 		  Connection connection = DBManager.getInstance().getConnection();
@@ -168,5 +170,25 @@ public class GroupeListDAO {
        {
            e.printStackTrace();
        }
+	}
+	
+	public List<Groupe> getGroupeSons(String id) {
+		List<Groupe> groupes = new ArrayList<Groupe>();
+		Connection connection = DBManager.getInstance().getConnection();
+	    try {
+	    	PreparedStatement pstmt = connection.prepareStatement("SELECT idGroupe,nomGroupe,redacteur FROM Groupe, Groupe_has_Groupe WHERE idGroupeAscendant = ? AND idGroupe = idGroupeDescendant");
+	    	pstmt.setString(1, id);
+	        ResultSet rs = pstmt.executeQuery();
+	        while(rs.next()) {
+	        	String idGroupe = rs.getString("idGroupe");
+	            String nomGroupe = rs.getString("nomGroupe");
+	            String redacteur = rs.getString("redacteur");
+	            Groupe groupe = new Groupe(idGroupe,nomGroupe,redacteur);
+	            groupes.add(groupe);
+	        }
+	    } catch (SQLException e) {
+	    	e.printStackTrace();
+	    }
+	    return groupes;
 	}
 }
