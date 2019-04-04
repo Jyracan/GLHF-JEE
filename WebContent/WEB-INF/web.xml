@@ -74,6 +74,7 @@
   <servlet-mapping>
     <servlet-name>standard_Menu</servlet-name>
     <url-pattern>/standard/Menu</url-pattern>
+    <url-pattern>/editor/Menu</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -84,6 +85,7 @@
   <servlet-mapping>
     <servlet-name>standard_StudentVisualizationServlet</servlet-name>
     <url-pattern>/standard/StudentVisualizationServlet</url-pattern>
+    <url-pattern>/editor/StudentVisualizationServlet</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -94,6 +96,7 @@
   <servlet-mapping>
     <servlet-name>standard_StudentDetailsServlet</servlet-name>
     <url-pattern>/standard/StudentDetails</url-pattern>
+    <url-pattern>/editor/StudentDetails</url-pattern>
   </servlet-mapping>
   
   <servlet>
