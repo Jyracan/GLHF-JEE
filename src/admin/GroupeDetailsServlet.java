@@ -79,7 +79,8 @@ public class GroupeDetailsServlet extends HttpServlet {
 			gld.supprEtu(searchText, idGroupe);
 			doGet(request, response);
 		} else if(ajtGroupe != null && searchGroupe != "") {
-			
+			gld.addGrpToGrp(idGroupe, searchGroupe);
+			doGet(request, response);
 		} else if(supprGroupe != null && searchGroupe != "") {
 			
 		}

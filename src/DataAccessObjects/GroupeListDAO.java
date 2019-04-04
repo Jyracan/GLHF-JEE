@@ -191,4 +191,27 @@ public class GroupeListDAO {
 	    }
 	    return groupes;
 	}
+	
+	public void addGrpToGrp(String idFather, String idSon) {
+		Connection connection = DBManager.getInstance().getConnection();
+		PreparedStatement pstmt;
+		try {
+			//insertion dans group_has_groupe
+			pstmt = connection.prepareStatement("INSERT INTO Groupe_has_Groupe (idGroupeAscendant,idGroupeDescendant)  VALUES (? , ?)");
+			pstmt.setString(1, idFather);
+			pstmt.setString(2, idSon);
+			pstmt.executeUpdate();
+			
+			//insertion des étudiants dans le groupe
+			pstmt = connection.prepareStatement("SELECT id FROM Etudiant,Etudiant_has_Groupe WHERE id = Etudiant_id AND Groupe_idGroupe = ?");
+			pstmt.setString(1, idSon);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ajtEtu(rs.getString("id"), idFather);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
